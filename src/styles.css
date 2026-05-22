@@ -1,5 +1,7 @@
 @plugin "@tailwindcss/typography";
 
+@source "./components";
+
 @custom-variant dark (&:is(.dark *));
 
 /* Code for Canada Brand Theme */

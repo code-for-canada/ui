@@ -29,6 +29,12 @@ export {
   FieldTitle,
 } from "./components/field";
 
+export {
+  Hero,
+  type HeroProps,
+  type HeroColor,
+} from "./components/hero";
+
 export { IconCircle, iconCircleVariants } from "./components/icon-circle";
 
 export {

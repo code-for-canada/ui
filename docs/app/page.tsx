@@ -7,10 +7,12 @@ import {
   CardHeader,
   Eyebrow,
   Heading,
+  Hero,
   IconCircle,
   Input,
   Label,
   Link,
+  LoadingIndicator,
   Logo,
   Prose,
   RoundedImage,
@@ -28,15 +30,12 @@ export default function DesignSystemPage() {
     <div className="relative">
 
       {/* Hero */}
-      <section className="bg-c4c-blue-200 py-20 lg:py-32">
-        <div className="mx-auto px-4 container max-w-5xl">
-          <Eyebrow color="blue" className="mb-4">Design System</Eyebrow>
-          <Heading color="blue" as="h1" size="lg" className="mb-6">
-            <strong>The Code for Canada Design System</strong> — shared primitives for every C4C application.
-          </Heading>
-          <Body size="lead">Typography, color, forms, buttons, and brand elements — one package, all your apps.</Body>
-        </div>
-      </section>
+      <Hero
+        color="blue"
+        title="The Code for Canada Design System"
+        summary="Shared primitives for every C4C application — typography, color, forms, buttons, and brand elements in one package."
+        cta={{ label: "View on GitHub", href: "https://github.com/code-for-canada/ui" }}
+      />
 
       {/* Logo */}
       <section className="py-16 bg-white">
@@ -78,7 +77,7 @@ export default function DesignSystemPage() {
         <div className="container mx-auto px-4 max-w-5xl">
           <Eyebrow className="mb-4">Primitives</Eyebrow>
           <Heading as="h2" size="xl" className="mb-8">Typography</Heading>
-          <div className="bg-white rounded-3xl p-8 space-y-8 shadow-sm">
+          <div className="bg-white rounded-3xl p-8 space-y-8">
             <div className="space-y-2">
               <Body size="xs" className="text-muted-foreground font-mono">Eyebrow</Body>
               <div className="flex flex-wrap gap-6 items-center">
@@ -128,7 +127,7 @@ export default function DesignSystemPage() {
           <Eyebrow className="mb-4">Tokens</Eyebrow>
           <Heading as="h2" size="xl" className="mb-2">Colors</Heading>
           <Prose className="mb-8">
-            <p className="lead">600+ for text and interactive elements. Below 600 for backgrounds. All WCAG 2.2 compliant when used as documented.</p>
+            <p className="lead">Use level 600+ for text and interactive elements, and below 600 for backgrounds. Alternatively, for the inverted theme use 200 or lighter for text and 700 or darker for background. WCAG 2.2 compliant when used as documented.</p>
           </Prose>
           <div className="grid gap-6 md:grid-cols-4">
             {[
@@ -237,7 +236,7 @@ export default function DesignSystemPage() {
           <div className="space-y-6">
             <div>
               <Body size="sm" className="text-muted-foreground mb-3">Default</Body>
-              <div className="flex flex-wrap gap-3">
+              <div className="space-x-3">
                 <Button size="sm">Small</Button>
                 <Button>Default</Button>
                 <Button size="lg">Large</Button>
@@ -247,7 +246,7 @@ export default function DesignSystemPage() {
             </div>
             <div>
               <Body size="sm" className="text-muted-foreground mb-3">Outline</Body>
-              <div className="flex flex-wrap gap-3">
+              <div className="space-x-3">
                 <Button variant="outline" size="sm">Small</Button>
                 <Button variant="outline">Default</Button>
                 <Button variant="outline" size="lg">Large</Button>
@@ -407,6 +406,25 @@ export default function DesignSystemPage() {
               <p>One wrapper, consistent brand voice across all rich text throughout the app.</p>
             </blockquote>
           </Prose>
+        </div>
+      </section>
+
+      {/* Loading Indicator */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <Eyebrow className="mb-4">Components</Eyebrow>
+          <Heading as="h2" size="xl" className="mb-2">Loading Indicator</Heading>
+          <Prose className="mb-8">
+            <p className="lead">The animated brand mark for loading states. The gif and reduced-motion fallback are bundled with the package — no assets to copy. Honours <code>prefers-reduced-motion</code> by swapping to a static logo.</p>
+          </Prose>
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-3xl bg-muted">
+              <LoadingIndicator />
+            </div>
+            <div className="rounded-3xl bg-muted">
+              <LoadingIndicator label="Loading projects…" />
+            </div>
+          </div>
         </div>
       </section>
 

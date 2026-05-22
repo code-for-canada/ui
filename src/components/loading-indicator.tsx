@@ -1,18 +1,21 @@
 import * as React from "react"
 import { cn } from "../utils"
 import { Body } from "./typography"
+import { loadingGif, loadingStatic } from "./loading-indicator-assets"
 
 interface LoadingIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: string
+  /** Override the animated logo (defaults to the bundled brand gif) */
   gifSrc?: string
+  /** Override the reduced-motion fallback (defaults to the bundled brand logo) */
   staticSrc?: string
 }
 
 function LoadingIndicator({
   className,
   label,
-  gifSrc = "/C4C-Logo-Animated.gif",
-  staticSrc = "/logo.svg",
+  gifSrc = loadingGif,
+  staticSrc = loadingStatic,
   ...props
 }: LoadingIndicatorProps) {
   return (
@@ -38,9 +41,9 @@ function LoadingIndicator({
         src={staticSrc}
         alt=""
         aria-hidden="true"
-        width={80}
-        height={80}
-        className="hidden motion-reduce:block"
+        width={160}
+        height={78}
+        className="hidden h-auto w-40 motion-reduce:block"
       />
       {label ? (
         <Body size="lead" aria-live="polite">{label}</Body>
