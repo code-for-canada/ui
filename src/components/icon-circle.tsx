@@ -28,6 +28,7 @@ interface IconCircleProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, "color">,
     VariantProps<typeof iconCircleVariants> {}
 
+/** Brand-coloured circle holding an icon. Pass a single line icon (e.g. lucide) as children. `color`: red | purple | blue; `size`: sm | default | lg. */
 function IconCircle({ className, color, size, children, ...props }: IconCircleProps) {
   return (
     <span

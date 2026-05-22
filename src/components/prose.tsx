@@ -21,6 +21,7 @@ const proseVariants = cva("prose prose-img:rounded-lg prose-img:reveal", {
   },
 })
 
+/** Wraps CMS/markdown rich text in brand typography. `size`: sm | default | lg | xl; `invert` for dark backgrounds. Inherits the surrounding colour scheme. */
 function Prose({
   className,
   size = "default",

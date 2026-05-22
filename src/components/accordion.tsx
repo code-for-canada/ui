@@ -6,6 +6,7 @@ import { ChevronDownIcon } from "lucide-react"
 
 import { cn } from "../utils"
 
+/** Collapsible sections (Radix). Use `type="single" collapsible` for FAQs, or `type="multiple"`. Compose AccordionItem > AccordionTrigger + AccordionContent. */
 function Accordion({
   className,
   ...props

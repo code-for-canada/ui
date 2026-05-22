@@ -7,6 +7,7 @@ import { cn } from "../utils"
 import { Label } from "./label"
 import { Separator } from "./separator"
 
+/** Groups related fields under a {@link FieldLegend}. */
 function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
   return (
     <fieldset
@@ -21,6 +22,7 @@ function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
   )
 }
 
+/** Caption for a {@link FieldSet}. `variant`: legend | label. */
 function FieldLegend({
   className,
   variant = "legend",
@@ -41,6 +43,7 @@ function FieldLegend({
   )
 }
 
+/** Vertically stacks {@link Field}s with consistent spacing. */
 function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -78,6 +81,7 @@ const fieldVariants = cva(
   }
 )
 
+/** Form field wrapper (label + control + description/error). `orientation`: vertical | horizontal | responsive. */
 function Field({
   className,
   orientation = "vertical",
@@ -94,6 +98,7 @@ function Field({
   )
 }
 
+/** Stacks a field's label and description/error beside a control. */
 function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -107,6 +112,7 @@ function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/** {@link Label} styled for use inside a {@link Field}. */
 function FieldLabel({
   className,
   ...props
@@ -125,6 +131,7 @@ function FieldLabel({
   )
 }
 
+/** Inline non-label title within a field. */
 function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -138,6 +145,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/** Helper text shown under a field. */
 function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
@@ -153,6 +161,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
   )
 }
 
+/** Divider between fields, optionally with centred label text. */
 function FieldSeparator({
   children,
   className,
@@ -183,6 +192,7 @@ function FieldSeparator({
   )
 }
 
+/** Validation message(s); pass `errors` (array) or children. Renders `role="alert"`. */
 function FieldError({
   className,
   children,

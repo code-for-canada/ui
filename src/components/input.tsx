@@ -2,6 +2,7 @@ import * as React from "react"
 
 import { cn } from "../utils"
 
+/** Text input. Pair with a {@link Label} (match `htmlFor` to its `id`); styles the `aria-invalid` state. */
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (
     <input

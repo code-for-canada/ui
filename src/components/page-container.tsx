@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cn } from "../utils"
 
+/** Centred page-width wrapper (max-w-7xl) with responsive horizontal padding. Wrap section content to align it to the page grid. */
 const PageContainer = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>

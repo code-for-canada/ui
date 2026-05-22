@@ -45,10 +45,17 @@ export default function DesignSystemPage() {
       {/* Logo */}
       <section className="py-16 bg-white">
         <PageContainer>
-          <Heading as="h2" size="xl" className="mb-8">Logo</Heading>
-          <Body className="text-muted-foreground font-mono">
-            Code for Canada's logo and wordmark are geometric with node circles that connect with clean lines, emphasizing connecting the dots and going from point A to B.
-          </Body>
+          <Heading as="h2" size="xl" className="mb-3">Logo</Heading>
+          <Prose className="mb-8">
+            <p className="lead">
+              Our logo and wordmark are geometric — node circles connected by clean lines — emphasizing &ldquo;connecting the dots&rdquo; and moving from point A to B. It&rsquo;s the most recognizable expression of the brand, so treat it with care.
+            </p>
+            <ul>
+              <li><strong>Default to the full logo at its normal size.</strong> Reserve the mark (icon only) for exceptions — tight spaces like a compact nav, favicon, or avatar, or where the brand is already established on the page.</li>
+              <li><strong>Inverted.</strong> Use the white logo on dark backgrounds, brand-colour fills, or busy photography — never the red logo on a low-contrast surface.</li>
+              <li><strong>Don&rsquo;t</strong> recolour, stretch, skew, rotate, or add effects.</li>
+            </ul>
+          </Prose>
           <div className="space-y-8">
             <div className="space-y-3">
               <Body size="sm" className="text-muted-foreground">Full logo</Body>
@@ -91,7 +98,7 @@ export default function DesignSystemPage() {
           <div className="bg-white rounded-3xl p-8 space-y-8">
             <div className="space-y-2">
               <Body className="text-muted-foreground font-mono">Eyebrow</Body>
-              <Body className="text-muted-foreground font-mono">Eyebrow text is used to introduce the current topic or section. It should be limited to 1-4 words and appear above a Heading or Title. It can optionally appear with a circle icon. Only used to improve scannablility when using longer headings.</Body>
+              <Body className="text-muted-foreground font-mono italic">Use eyebrows sparingly — only alongside longer editorial headlines to improve scanning, not on every section. Limit to 1&ndash;4 words, place above a Heading or Title, optionally with a circle icon.</Body>
               <div className="flex flex-wrap gap-6 items-center">
                 <Eyebrow>Default</Eyebrow>
                 <Eyebrow icon={<MessageCircle size={18} />}>With icon</Eyebrow>
@@ -99,14 +106,17 @@ export default function DesignSystemPage() {
             </div>
             <div className="space-y-2">
               <Body className="text-muted-foreground font-mono">Title</Body>
+              <Body className="text-muted-foreground font-mono italic">The single page or hero title — use once per page. Emphasize the key word(s) to trigger the animated brand gradient; its colour follows the surrounding colour scheme.</Body>
               <Title as="p">Title text</Title>
             </div>
             <div className="space-y-2">
               <Body className="text-muted-foreground font-mono">Subtitle</Body>
+              <Body className="text-muted-foreground font-mono italic">A supporting line that sits directly under a Title to expand on it in a sentence or two.</Body>
               <Body size="lead">Secondary information. <strong>Emphasized content.</strong></Body>
             </div>
             <div className="space-y-3">
               <Body className="text-muted-foreground font-mono">Heading</Body>
+              <Body className="text-muted-foreground font-mono italic">Section and sub-section headings. Choose the heading level for a correct document outline and the size for visual weight — they&rsquo;re independent. The xl size can also headline the top of a page and use bold for emphasis; keep bold sparing so it stays meaningful. Colour follows the surrounding scheme.</Body>
               <Heading as="h3" size="xl">Heading xl</Heading>
               <Heading as="h3" size="lg">Heading lg</Heading>
               <Heading as="h3" size="md">Heading md</Heading>
@@ -114,6 +124,7 @@ export default function DesignSystemPage() {
             </div>
             <div className="space-y-3">
               <Body className="text-muted-foreground font-mono">Body</Body>
+              <Body className="text-muted-foreground font-mono italic">Paragraph and supporting text. Use lead for an introductory paragraph, default for general content, and sm or xs for captions and fine print.</Body>
               <Body size="lead">Lead body text emphasizes key point of a section <strong>with some emphasis.</strong></Body>
               <Body>Regular body text used for paragraphs and general content.</Body>
               <Body size="sm">Small body text for captions and supporting content.</Body>
@@ -185,13 +196,13 @@ export default function DesignSystemPage() {
         <PageContainer>
           <Heading as="h2" size="xl" className="mb-2">Color Schemes</Heading>
           <Prose className="mb-8">
-            <p className="lead">Add <code>scheme-blue</code>, <code>scheme-purple</code>, <code>scheme-red</code>, or their <code>-inverted</code> variants to any container. Inner prose and components inherit the palette automatically.</p>
+            <p className="lead">Each scheme sets a complete colour context — background, text, headings, and links — for everything inside it. Wrap a container in a scheme and its content inherits the palette automatically, so you rarely set colours by hand. Pick the scheme that matches the tone of the content:</p>
           </Prose>
           <div className="grid gap-6 md:grid-cols-3">
             <div className="scheme-blue rounded-3xl p-8">
               <Prose size="lg" className="max-w-none">
                 <h3>Blue</h3>
-                <p>Steady, practical, <strong>service-oriented content.</strong></p>
+                <p>Steady, practical, service-oriented content.</p>
                 <p><a href="#">A link in scheme context</a></p>
               </Prose>
             </div>
@@ -199,32 +210,32 @@ export default function DesignSystemPage() {
               <Eyebrow color="purple" icon={<Search size={16} />}>Research</Eyebrow>
               <Prose size="lg" className="mt-4 max-w-none">
                 <h3>Purple</h3>
-                <p>Reflective, strategic, or <strong>insight-driven content.</strong></p>
+                <p>Reflective, strategic, or insight-driven content.</p>
               </Prose>
             </div>
             <div className="scheme-red rounded-3xl p-8">
               <Prose size="lg" className="max-w-none">
                 <h3>Red</h3>
-                <p>Strong brand presence or <strong>editorial highlights.</strong></p>
+                <p>Strong brand presence or editorial highlights.</p>
               </Prose>
             </div>
             <div className="scheme-blue-inverted rounded-3xl p-8">
               <Prose size="lg" className="max-w-none">
                 <h3>Blue Inverted</h3>
-                <p>Dark mode for <strong>blue theme content.</strong></p>
+                <p>Dark mode for blue theme content.</p>
                 <p><a href="#">Link on dark blue</a></p>
               </Prose>
             </div>
             <div className="scheme-purple-inverted rounded-3xl p-8">
               <Prose size="lg" className="max-w-none">
                 <h3>Purple Inverted</h3>
-                <p>Dark mode for <strong>purple theme content.</strong></p>
+                <p>Dark mode for purple theme content.</p>
               </Prose>
             </div>
             <div className="scheme-red-inverted rounded-3xl p-8">
               <Prose size="lg" className="max-w-none">
                 <h3>Red Inverted</h3>
-                <p>Dark mode for <strong>red theme content.</strong></p>
+                <p>Dark mode for red theme content.</p>
               </Prose>
             </div>
           </div>
@@ -234,7 +245,10 @@ export default function DesignSystemPage() {
       {/* Buttons */}
       <section className="py-16 bg-white">
         <PageContainer>
-          <Heading as="h2" size="xl" className="mb-8">Buttons</Heading>
+          <Heading as="h2" size="xl" className="mb-3">Buttons</Heading>
+          <Prose className="mb-8">
+            <p className="lead">Use buttons for actions and links for navigation. Lead with a single primary (default) button per view; use outline for secondary actions and ghost for low-emphasis or repeated ones. On dark or coloured backgrounds, switch to the white and white-outline variants.</p>
+          </Prose>
           <div className="space-y-6">
             <div>
               <Body size="sm" className="text-muted-foreground mb-3">Default</Body>
@@ -272,6 +286,7 @@ export default function DesignSystemPage() {
             </div>
             <div>
               <Body size="sm" className="text-muted-foreground mb-3">Link</Body>
+              <Body className="text-muted-foreground italic mb-3">Links navigate; buttons act. Use the default animated underline inline in text, plain for a quieter underline, and inverse on dark backgrounds. External links open in a new tab automatically.</Body>
               <div className="flex flex-wrap items-center gap-8">
                 <Link href="#">Default Link</Link>
                 <Link href="#" variant="plain">Plain Link</Link>
@@ -290,7 +305,10 @@ export default function DesignSystemPage() {
       {/* Icon Circle */}
       <section className="py-16 bg-muted">
         <PageContainer>
-          <Heading as="h2" size="xl" className="mb-8">Icon Circle</Heading>
+          <Heading as="h2" size="xl" className="mb-3">Icon Circle</Heading>
+          <Prose className="mb-8">
+            <p className="lead">A filled brand-colour circle that holds a single icon. Use it to add a colour accent to card headers, feature lists, or eyebrows — keep to simple line icons and match the colour to the surrounding scheme.</p>
+          </Prose>
           <div className="flex flex-wrap gap-6 items-center">
             <IconCircle><Code className="size-5" /></IconCircle>
             <IconCircle color="purple"><Users className="size-5" /></IconCircle>
@@ -304,7 +322,10 @@ export default function DesignSystemPage() {
       {/* Cards */}
       <section className="py-16 bg-white">
         <PageContainer>
-          <Heading as="h2" size="xl" className="mb-8">Cards</Heading>
+          <Heading as="h2" size="xl" className="mb-3">Cards</Heading>
+          <Prose className="mb-8">
+            <p className="lead">Cards group a single idea — a service, feature, or link — onto one surface. Compose a header (icon, heading, short description), optional content, and a footer for a single action or link. Use them in evenly sized grids and keep the copy short so they stay scannable.</p>
+          </Prose>
           <div className="grid gap-6 md:grid-cols-3">
             {[
               { icon: <Code className="size-6" />, title: "Collaborative Development", body: "Work with your existing team to co-develop digital services." },
@@ -331,7 +352,10 @@ export default function DesignSystemPage() {
       {/* Forms */}
       <section className="py-16 bg-muted">
         <PageContainer>
-          <Heading as="h2" size="xl" className="mb-8">Form Fields</Heading>
+          <Heading as="h2" size="xl" className="mb-3">Form Fields</Heading>
+          <Prose className="mb-8">
+            <p className="lead">Pair a Label with an Input and connect them (the label&rsquo;s htmlFor matches the input&rsquo;s id) so the form stays accessible. Keep helper text short and place it directly under the field. For richer forms — descriptions, validation errors, or horizontal layouts — compose the Field primitives.</p>
+          </Prose>
           <Card className="max-w-md">
             <CardHeader>
               <Heading as="h3" size="sm">Contact Us</Heading>
@@ -362,7 +386,10 @@ export default function DesignSystemPage() {
       {/* Accordion */}
       <section className="py-16 bg-white">
         <PageContainer>
-          <Heading as="h2" size="xl" className="mb-8">Accordion</Heading>
+          <Heading as="h2" size="xl" className="mb-3">Accordion</Heading>
+          <Prose className="mb-8">
+            <p className="lead">Accordions reveal secondary content on demand — ideal for FAQs and dense reference material. Use a single open panel for FAQs, keep each trigger to a short scannable question, and never hide essential information behind one.</p>
+          </Prose>
           <Accordion type="single" collapsible className="max-w-xl">
             <AccordionItem value="item-1">
               <AccordionTrigger>What is Code for Canada?</AccordionTrigger>
@@ -371,15 +398,15 @@ export default function DesignSystemPage() {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
-              <AccordionTrigger>How do I use this design system?</AccordionTrigger>
+              <AccordionTrigger>When should I use an accordion?</AccordionTrigger>
               <AccordionContent>
-                Install <code>@code-for-canada/ui</code>, import the styles, and import components from the package.
+                For FAQs and secondary details people can scan and open on demand. Keep the essentials visible — don&rsquo;t bury key information inside one.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-              <AccordionTrigger>What tech stack is required?</AccordionTrigger>
+              <AccordionTrigger>Can I adapt components to my page?</AccordionTrigger>
               <AccordionContent>
-                Next.js (v14+) and Tailwind CSS v4. Components are shipped as source and transpiled by your Next.js app.
+                Yes — components accept a className and offer brand-safe variants, so you can adjust spacing, colour scheme, and emphasis without leaving the system.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -391,7 +418,7 @@ export default function DesignSystemPage() {
         <PageContainer>
           <Heading as="h2" size="xl" className="mb-2">Loading Indicator</Heading>
           <Prose className="mb-8">
-            <p className="lead">The animated brand mark for blank screens and loading states. </p>
+            <p className="lead">The animated brand mark for blank screens and loading states. Pass a label to say what&rsquo;s loading; it announces politely and falls back to a static logo when reduced motion is preferred.</p>
           </Prose>
           <div className="grid gap-6 md:grid-cols-2">
             <div className="rounded-3xl bg-muted">
@@ -410,12 +437,11 @@ export default function DesignSystemPage() {
           <Heading as="h2" size="xl" className="mb-8">Prose</Heading>
           <Prose className="bg-white rounded-3xl p-8">
             <h2>Rich Text Content</h2>
-            <p className="lead">The Prose component wraps CMS-driven rich text with brand-consistent typography styling.</p>
-            <p>Wrap any rich text content — from a CMS, markdown, or otherwise — in <code>{'<Prose>'}</code> to get consistent heading hierarchy, link styles, lists, and blockquotes.</p>
+            <p className="lead">Wrap rich text — from a CMS, markdown, or an editor — in Prose to give it consistent brand typography: heading hierarchy, links, lists, and blockquotes, all styled to match.</p>
             <ul>
-              <li>Supports <code>size</code> prop: <code>sm</code>, <code>default</code>, <code>lg</code>, <code>xl</code></li>
-              <li>Supports <code>invert</code> prop for dark backgrounds</li>
-              <li>Inherits scheme colors automatically when inside a <code>.scheme-*</code> container</li>
+              <li>Use it for CMS or markdown content where you don&rsquo;t control the markup.</li>
+              <li>Scale it to the context, and let it inherit the surrounding colour scheme.</li>
+              <li>For standalone headings or paragraphs in a layout, use the typography components instead.</li>
             </ul>
             <blockquote>
               <p>One wrapper, consistent brand voice across all rich text throughout the app.</p>

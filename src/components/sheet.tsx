@@ -6,6 +6,7 @@ import { XIcon } from "lucide-react"
 
 import { cn } from "../utils"
 
+/** Slide-out panel / drawer (Radix Dialog). Compose SheetTrigger + SheetContent (with SheetHeader, SheetTitle, SheetDescription, SheetFooter). */
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />
 }
@@ -44,6 +45,7 @@ function SheetOverlay({
   )
 }
 
+/** Drawer panel with a built-in close button. `side`: top | right | bottom | left (default right). */
 function SheetContent({
   className,
   children,

@@ -2,7 +2,9 @@ import * as React from "react";
 import { cn } from "../utils";
 
 interface LogoProps extends React.SVGAttributes<SVGElement> {
+  /** `full` = wordmark + mark (default); `mark` = icon only */
   variant?: "full" | "mark";
+  /** Rendered size preset — dimensions differ between `full` and `mark` */
   size?: "sm" | "default" | "lg";
   /** Use white variant for dark backgrounds */
   inverted?: boolean;
@@ -20,6 +22,10 @@ const markSizeMap = {
   lg: { width: 80, height: 80 },
 };
 
+/**
+ * Code for Canada logo as inline SVG (brand red, or white when `inverted`).
+ * Default to the full logo; reserve `variant="mark"` for tight spaces.
+ */
 function Logo({
   variant = "full",
   size = "default",

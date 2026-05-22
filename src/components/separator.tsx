@@ -5,6 +5,7 @@ import * as SeparatorPrimitive from "@radix-ui/react-separator"
 
 import { cn } from "../utils"
 
+/** Thin rule (Radix). `orientation`: horizontal (default) | vertical. */
 function Separator({
   className,
   orientation = "horizontal",

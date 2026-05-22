@@ -11,6 +11,7 @@ interface LoadingIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {
   staticSrc?: string
 }
 
+/** Animated brand mark for loading/blank states. Optional `label` is announced politely; respects reduced-motion with a static fallback. */
 function LoadingIndicator({
   className,
   label,

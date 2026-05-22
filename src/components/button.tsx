@@ -36,6 +36,7 @@ const buttonVariants = cva(
   }
 )
 
+/** Action button. `variant`: default (primary) · outline (secondary) · ghost (low-emphasis) · white / white-outline (dark backgrounds). `asChild` renders as another element (e.g. an `<a>`). Prefer one primary per view. */
 function Button({
   className,
   variant = "default",

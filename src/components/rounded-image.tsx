@@ -7,6 +7,7 @@ interface RoundedImageProps extends Omit<ImageProps, "className"> {
   containerClassName?: string
 }
 
+/** Next.js Image cropped into a rounded frame (object-cover). `containerClassName` sizes the frame (e.g. aspect ratio); `className` styles the image. */
 const RoundedImage = React.forwardRef<HTMLImageElement, RoundedImageProps>(
   ({ className, containerClassName, alt, src, ...props }, ref) => {
     return (

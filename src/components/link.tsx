@@ -54,6 +54,7 @@ interface LinkProps
   href: string
 }
 
+/** Inline text link. Auto-detects internal (`/`, `#` → Next.js Link) vs external (opens in a new tab). `variant="plain"` for a quieter underline; `color="inverse"` on dark backgrounds. */
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   ({ className, variant, color, href, ...props }, ref) => {
     const isInternal = href.startsWith("/") || href.startsWith("#")

@@ -28,6 +28,7 @@ interface HeroProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   containerClassName?: string;
 }
 
+/** Page hero: a scheme-coloured banner with a title, optional summary, CTAs, and an overlapping image. */
 function Hero({
   title,
   summary,

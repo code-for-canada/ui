@@ -2,6 +2,7 @@ import * as React from "react"
 
 import { cn } from "../utils"
 
+/** Rounded content surface for a single idea. Compose `CardHeader` (icon + heading + description), `CardContent`, and `CardFooter` (one action/link). */
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div

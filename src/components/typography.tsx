@@ -12,6 +12,7 @@ interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
   as?: "h1" | "h2" | "h3" | "p" | "span";
 }
 
+/** Single page/hero title (one per page). Emphasize key words with `<strong>` for the brand gradient; colour follows the scheme. */
 function Title({ className, as: Component = "h1", ...props }: TitleProps) {
   return (
     <Component className={cn(titleVariants(), className)} {...props} />
@@ -37,6 +38,7 @@ interface SubtitleProps
   as?: "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
 }
 
+/** Supporting line under a {@link Title}. */
 function Subtitle({
   className,
   size,
@@ -72,6 +74,7 @@ interface HeadingProps
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "p";
 }
 
+/** Section heading. `as` = outline level, `size` = visual weight (independent); colour follows the scheme. `size="xl"` can head a page and wrap `<strong>` for emphasis — keep bold sparing. */
 function Heading({ className, size, as: Component, ...props }: HeadingProps) {
   return (
     <Component
@@ -110,6 +113,7 @@ interface EyebrowProps
   icon?: React.ReactNode;
 }
 
+/** Uppercase section label above a heading. Use sparingly — only with longer editorial headlines to aid scanning, not on every section. Keep to 1–4 words; `icon` shows it in a coloured circle. */
 function Eyebrow({
   className,
   size,
@@ -162,6 +166,7 @@ interface BodyProps
   as?: "p" | "span" | "div";
 }
 
+/** Paragraph text. `lead` = intro paragraph, `default` = body, `sm`/`xs` = captions. */
 function Body({ className, size, as: Component = "p", ...props }: BodyProps) {
   return (
     <Component

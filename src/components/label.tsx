@@ -5,6 +5,7 @@ import * as LabelPrimitive from "@radix-ui/react-label"
 
 import { cn } from "../utils"
 
+/** Accessible form label (Radix). Set `htmlFor` to the input's `id`. */
 function Label({
   className,
   ...props

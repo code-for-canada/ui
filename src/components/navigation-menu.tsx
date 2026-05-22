@@ -5,6 +5,7 @@ import { ChevronDownIcon } from "lucide-react"
 
 import { cn } from "../utils"
 
+/** Top navigation with dropdowns (Radix). `viewport` (default true) renders a shared animated panel. Compose NavigationMenuList > NavigationMenuItem > NavigationMenuTrigger + NavigationMenuContent / NavigationMenuLink. */
 function NavigationMenu({
   className,
   children,
