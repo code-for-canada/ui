@@ -34,7 +34,7 @@ export default function DesignSystemPage() {
         color="purple"
         invert
         title={<>Our Design System</>}
-        summary={<><strong>Shared primitives for Code for Canada.</strong> Typography, color, forms, buttons, and brand elements in one package.</>}
+        summary={<>Shared primitives for Code for Canada that help us consistently <strong>communicate who we are across the web.</strong></>}
         cta={
             <Button asChild>
               <a href="https://github.com/code-for-canada/ui">View on GitHub</a>
@@ -46,6 +46,9 @@ export default function DesignSystemPage() {
       <section className="py-16 bg-white">
         <PageContainer>
           <Heading as="h2" size="xl" className="mb-8">Logo</Heading>
+          <Body className="text-muted-foreground font-mono">
+            Code for Canada's logo and wordmark are geometric with node circles that connect with clean lines, emphasizing connecting the dots and going from point A to B.
+          </Body>
           <div className="space-y-8">
             <div className="space-y-3">
               <Body size="sm" className="text-muted-foreground">Full logo</Body>
@@ -79,36 +82,39 @@ export default function DesignSystemPage() {
       {/* Typography */}
       <section className="py-16 bg-muted">
         <PageContainer>
-          <Heading as="h2" size="xl" className="mb-8">Typography</Heading>
+          <Heading as="h2" size="xl" className="mb-4">Typography</Heading>
+          <Prose>
+            <p className="lead pb-8">
+              Combining a clear typography hierarchy with plain language helps us communicate with our brand voice: <strong>approachable, straightforward, and empathetic</strong>.
+            </p>
+          </Prose>
           <div className="bg-white rounded-3xl p-8 space-y-8">
             <div className="space-y-2">
-              <Body size="xs" className="text-muted-foreground font-mono">Eyebrow</Body>
-              <Body size="xs" className="text-muted-foreground font-mono">Used only for distinguishing different sections when the heading is used for more editorial content.</Body>
+              <Body className="text-muted-foreground font-mono">Eyebrow</Body>
+              <Body className="text-muted-foreground font-mono">Eyebrow text is used to introduce the current topic or section. It should be limited to 1-4 words and appear above a Heading or Title. It can optionally appear with a circle icon. Only used to improve scannablility when using longer headings.</Body>
               <div className="flex flex-wrap gap-6 items-center">
                 <Eyebrow>Default</Eyebrow>
-                <Eyebrow color="purple">Purple</Eyebrow>
-                <Eyebrow color="blue">Blue</Eyebrow>
-                <Eyebrow icon={<MessageCircle size={16} />}>With icon</Eyebrow>
+                <Eyebrow icon={<MessageCircle size={18} />}>With icon</Eyebrow>
               </div>
             </div>
             <div className="space-y-2">
-              <Body size="xs" className="text-muted-foreground font-mono">Title</Body>
+              <Body className="text-muted-foreground font-mono">Title</Body>
               <Title as="p">Title text</Title>
             </div>
             <div className="space-y-2">
-              <Body size="xs" className="text-muted-foreground font-mono">Subtitle</Body>
+              <Body className="text-muted-foreground font-mono">Subtitle</Body>
               <Body size="lead">Secondary information. <strong>Emphasized content.</strong></Body>
             </div>
             <div className="space-y-3">
-              <Body size="xs" className="text-muted-foreground font-mono">Heading (sizes)</Body>
+              <Body className="text-muted-foreground font-mono">Heading</Body>
               <Heading as="h3" size="xl">Heading xl</Heading>
               <Heading as="h3" size="lg">Heading lg</Heading>
               <Heading as="h3" size="md">Heading md</Heading>
               <Heading as="h3" size="sm">Heading sm</Heading>
             </div>
             <div className="space-y-3">
-              <Body size="xs" className="text-muted-foreground font-mono">Body</Body>
-              <Body size="lead">Lead body text. <strong>Important emphasis.</strong></Body>
+              <Body className="text-muted-foreground font-mono">Body</Body>
+              <Body size="lead">Lead body text emphasizes key point of a section <strong>with some emphasis.</strong></Body>
               <Body>Regular body text used for paragraphs and general content.</Body>
               <Body size="sm">Small body text for captions and supporting content.</Body>
             </div>
@@ -128,6 +134,7 @@ export default function DesignSystemPage() {
               { name: "Red", shades: [
                 { n: "100", bg: "bg-c4c-red-100", text: "text-c4c-red-900", hex: "#FFF6F5" },
                 { n: "200", bg: "bg-c4c-red-200", text: "text-c4c-red-900", hex: "#FBE9EE" },
+                { n: "400", bg: "bg-c4c-red-400", text: "text-c4c-red-900", hex: "#FFA2B7" },
                 { n: "600", bg: "bg-c4c-red-600", text: "text-white", hex: "#DE242B" },
                 { n: "800", bg: "bg-c4c-red-800", text: "text-white", hex: "#900958" },
                 { n: "900", bg: "bg-c4c-red-900", text: "text-white", hex: "#69124C" },
@@ -135,6 +142,7 @@ export default function DesignSystemPage() {
               { name: "Purple", shades: [
                 { n: "100", bg: "bg-c4c-purple-100", text: "text-c4c-purple-900", hex: "#FAF8FE" },
                 { n: "200", bg: "bg-c4c-purple-200", text: "text-c4c-purple-900", hex: "#D6CAEA" },
+                { n: "400", bg: "bg-c4c-purple-400", text: "text-c4c-purple-900", hex: "#D1B2FF" },
                 { n: "700", bg: "bg-c4c-purple-700", text: "text-white", hex: "#6B3FB0" },
                 { n: "800", bg: "bg-c4c-purple-800", text: "text-white", hex: "#4B2683" },
                 { n: "900", bg: "bg-c4c-purple-900", text: "text-white", hex: "#39165B" },
@@ -142,11 +150,13 @@ export default function DesignSystemPage() {
               { name: "Blue", shades: [
                 { n: "100", bg: "bg-c4c-blue-100", text: "text-c4c-blue-900", hex: "#F5F7FF" },
                 { n: "200", bg: "bg-c4c-blue-200", text: "text-c4c-blue-900", hex: "#D6DEFF" },
+                { n: "400", bg: "bg-c4c-blue-400", text: "text-c4c-blue-900", hex: "#95A3F9" },
                 { n: "600", bg: "bg-c4c-blue-600", text: "text-white", hex: "#5A55EC" },
                 { n: "800", bg: "bg-c4c-blue-800", text: "text-white", hex: "#2B3482" },
                 { n: "900", bg: "bg-c4c-blue-900", text: "text-white", hex: "#121C4E" },
               ]},
               { name: "Neutral", shades: [
+                { n: "50", bg: "bg-c4c-neutral-50", text: "text-c4c-neutral-900", hex: "#FCFCFD" },
                 { n: "100", bg: "bg-c4c-neutral-100", text: "text-c4c-neutral-900", hex: "#F4F4F6" },
                 { n: "200", bg: "bg-c4c-neutral-200", text: "text-c4c-neutral-900", hex: "#DDDDE6" },
                 { n: "600", bg: "bg-c4c-neutral-600", text: "text-white", hex: "#494865" },
@@ -160,7 +170,7 @@ export default function DesignSystemPage() {
                   {shades.map(({ n, bg, text, hex }) => (
                     <div key={n} className={`flex h-10 items-center justify-between px-3 ${bg}`}>
                       <Body size="sm" className={text}>{n}</Body>
-                      <Body size="xs" className={`font-mono ${text}`}>{hex}</Body>
+                      <Body className={`font-mono ${text}`}>{hex}</Body>
                     </div>
                   ))}
                 </div>
@@ -336,7 +346,7 @@ export default function DesignSystemPage() {
                 <div className="space-y-1.5">
                   <Label htmlFor="email">Email</Label>
                   <Input id="email" type="email" placeholder="you@example.com" />
-                  <Body size="xs" className="text-muted-foreground">We&apos;ll never share your email.</Body>
+                  <Body className="text-muted-foreground">We&apos;ll never share your email.</Body>
                 </div>
                 <div className="space-y-1.5">
                   <Label htmlFor="message">Message</Label>
@@ -381,7 +391,7 @@ export default function DesignSystemPage() {
         <PageContainer>
           <Heading as="h2" size="xl" className="mb-2">Loading Indicator</Heading>
           <Prose className="mb-8">
-            <p className="lead">The animated brand mark for loading states. </p>
+            <p className="lead">The animated brand mark for blank screens and loading states. </p>
           </Prose>
           <div className="grid gap-6 md:grid-cols-2">
             <div className="rounded-3xl bg-muted">
