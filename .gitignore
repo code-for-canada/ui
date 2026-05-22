@@ -1,0 +1,14 @@
+# deps
+node_modules
+.pnpm-store
+
+# next
+.next
+out
+
+# misc
+.DS_Store
+*.pem
+.env
+.env.local
+.env.*.local
