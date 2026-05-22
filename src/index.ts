@@ -31,6 +31,11 @@ export {
 
 export { IconCircle, iconCircleVariants } from "./components/icon-circle";
 
+export {
+  LoadingIndicator,
+  type LoadingIndicatorProps,
+} from "./components/loading-indicator";
+
 export { Input } from "./components/input";
 
 export { Label } from "./components/label";
