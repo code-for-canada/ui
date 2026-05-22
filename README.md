@@ -4,22 +4,17 @@ Shared design system for Code for Canada applications. Built with Radix UI + cla
 
 ## Install
 
-### 1. Auth — add `.npmrc` in your consumer repo root
-
-```
-@code-for-canada:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
+```bash
+pnpm add github:code-for-canada/ui
 ```
 
-`NODE_AUTH_TOKEN` must be set in your environment or CI secrets to a GitHub personal access token (or the repo's `GITHUB_TOKEN` in Actions) with `read:packages` scope.
-
-### 2. Install the package
+To pin to a specific release tag:
 
 ```bash
-pnpm add @code-for-canada/ui
+pnpm add github:code-for-canada/ui#v0.1.0
 ```
 
-### 3. Add `transpilePackages` to `next.config`
+### 1. Add `transpilePackages` to `next.config`
 
 ```ts
 // next.config.ts
@@ -28,7 +23,7 @@ const nextConfig = {
 };
 ```
 
-### 4. Wire up fonts (Poppins)
+### 2. Wire up fonts (Poppins)
 
 In your root layout:
 
@@ -53,15 +48,20 @@ export default function RootLayout({ children }) {
 }
 ```
 
-### 5. Import styles in your global CSS
+### 3. Import styles in your global CSS
 
 ```css
 /* app/globals.css */
 @import "tailwindcss";
 @import "@code-for-canada/ui/styles.css";
+
+/* Tell Tailwind to scan the package's component source for class names */
+@source "../node_modules/@code-for-canada/ui/src";
 ```
 
-The `styles.css` import provides all design tokens (`@theme inline`), color palette, semantic aliases, radius scale, `.scheme-*` containers, animations, and prose theming. It also includes a Tailwind `@source` directive so the compiler scans the package's components automatically.
+The `styles.css` import provides all design tokens (`@theme inline`), color palette, semantic aliases, radius scale, `.scheme-*` containers, animations, and prose theming.
+
+The `@source` line ensures Tailwind's JIT scans the package components so all utility classes are generated.
 
 ---
 
@@ -128,12 +128,12 @@ import { Link } from "@code-for-canada/ui";
 ### Card
 
 ```tsx
-import { Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription } from "@code-for-canada/ui";
+import { Card, CardHeader, CardContent, CardFooter } from "@code-for-canada/ui";
 
 <Card>
   <CardHeader>
-    <CardTitle>Card Title</CardTitle>
-    <CardDescription>Supporting description.</CardDescription>
+    <Heading as="h3" size="sm">Card Title</Heading>
+    <Body className="text-muted-foreground">Supporting description.</Body>
   </CardHeader>
   <CardContent>Content here.</CardContent>
   <CardFooter>Footer actions.</CardFooter>
@@ -156,15 +156,13 @@ import { Code } from "lucide-react";
 ### Form primitives
 
 ```tsx
-import { Field, Input, Label } from "@code-for-canada/ui";
+import { Input, Label } from "@code-for-canada/ui";
 
 <div className="space-y-1.5">
   <Label htmlFor="email">Email</Label>
   <Input id="email" type="email" placeholder="you@example.com" />
 </div>
 ```
-
-`Field` wraps a label + input + optional description with consistent spacing.
 
 ### Prose
 
@@ -241,20 +239,20 @@ In your consumer repo's `package.json`:
 {
   "pnpm": {
     "overrides": {
-      "@code-for-canada/ui": "link:../ui/packages/ui"
+      "@code-for-canada/ui": "link:../ui"
     }
   }
 }
 ```
 
-Then run `pnpm install` in the consumer. This resolves the package to your local working copy. The path is relative to the consumer repo root — adjust if your repos are in different locations.
+Then run `pnpm install` in the consumer. The path is relative to the consumer repo root — adjust based on where your repos are located.
 
 To revert, remove the override and run `pnpm install` again.
 
 **Option B — `pnpm link`**
 
 ```bash
-# in ui/packages/ui
+# in the ui repo root
 pnpm link --global
 
 # in your consumer repo
@@ -269,7 +267,7 @@ pnpm unlink @code-for-canada/ui
 pnpm install
 ```
 
-**Note:** `transpilePackages: ["@code-for-canada/ui"]` in `next.config` must remain in place whether you're using the published version or a local link. Next.js needs to transpile the TypeScript source either way.
+**Note:** `transpilePackages: ["@code-for-canada/ui"]` in `next.config` must remain in place whether you're using the installed version or a local link.
 
 ---
 
@@ -278,9 +276,9 @@ pnpm install
 This package uses [Changesets](https://github.com/changesets/changesets).
 
 1. Make your changes.
-2. Run `pnpm changeset` and follow the prompts to describe what changed.
+2. Run `pnpm changeset` and follow the prompts.
 3. Commit the generated `.changeset/*.md` file alongside your code change.
 4. When merged to `main`, a CI action opens a "Version Packages" PR.
-5. Merging that PR publishes a new version to GitHub Packages and updates `CHANGELOG.md`.
+5. Merging that PR bumps the version, updates `CHANGELOG.md`, and creates a git tag.
 
-Consumers with Renovate or Dependabot configured receive an automated PR for each new version.
+Consumers pin to a release tag: `pnpm add github:code-for-canada/ui#v0.2.0`

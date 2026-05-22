@@ -1,2 +1,5 @@
 @import "tailwindcss";
 @import "@code-for-canada/ui/styles.css";
+
+/* Scan package components for Tailwind class names */
+@source "../../src";

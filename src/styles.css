@@ -1,6 +1,3 @@
-/* Registers the package's component source with Tailwind's JIT scanner */
-@source "./components";
-
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
