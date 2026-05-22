@@ -5,7 +5,7 @@ import { IconCircle } from "./icon-circle";
 
 // Title - Single-use hero/page title (fixed size)
 const titleVariants = cva(
-  "tracking-tight leading-[0.95] text-foreground text-balance text-pretty text-5xl md:text-7xl lg:text-7xl font-bold [&_strong]:animate-gradient [&_strong]:bg-linear-to-r/oklch [&_strong]:from-purple-900  [&_strong]:via-red-800 [&_strong]:via-25% [&_strong]:to-red-600 [&_strong]:bg-[length:80%] [&_strong]:bg-clip-text [&_strong]:bg-repeat-round [&_strong]:text-transparent"
+  "text-[var(--scheme-muted)] tracking-tight leading-[0.95] text-balance text-pretty text-5xl md:text-7xl lg:text-7xl font-bold [&_strong]:animate-gradient [&_strong]:bg-linear-to-r/oklch [&_strong]:from-purple-900  [&_strong]:via-red-800 [&_strong]:via-25% [&_strong]:to-red-600 [&_strong]:bg-[length:80%] [&_strong]:bg-clip-text [&_strong]:bg-repeat-round [&_strong]:text-transparent"
 );
 
 interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
@@ -19,7 +19,7 @@ function Title({ className, as: Component = "h1", ...props }: TitleProps) {
 }
 
 // Subtitle - Chunkier secondary headlines
-const subtitleVariants = cva("tracking-tight text-pretty text-muted-foreground font-medium  [&_strong]:text-secondary/85 [&_strong]:font-semibold", {
+const subtitleVariants = cva("text-[var(--scheme-text)] tracking-tight text-pretty text-muted-foreground font-medium [&_strong]:font-semibold [&_strong]:text-[var(--scheme-muted)]", {
   variants: {
     size: {
       default: "text-xl md:text-2xl",
@@ -32,7 +32,7 @@ const subtitleVariants = cva("tracking-tight text-pretty text-muted-foreground f
 });
 
 interface SubtitleProps
-  extends React.HTMLAttributes<HTMLHeadingElement>,
+  extends Omit<React.HTMLAttributes<HTMLHeadingElement>, "color">,
     VariantProps<typeof subtitleVariants> {
   as?: "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
 }
@@ -52,26 +52,17 @@ function Subtitle({
 }
 
 // Heading - General headings with configurable size (decoupled from semantic level)
-const headingVariants = cva("tracking-tight text-balance font-semibold has-[strong]:font-semibold [&_strong]:font-bold", {
+const headingVariants = cva("tracking-tight text-balance font-semibold has-[strong]:font-semibold [&_strong]:font-bold text-[var(--scheme-muted)] has-[strong]:text-[var(--scheme-muted)] [&_strong]:text-[var(--scheme-text)]", {
   variants: {
     size: {
       sm: "text-xl leading-[1.1] md:text-2xl lg:text-2xl",
       md: "text-2xl leading-[1.1] md:text-3xl lg:text-3xl",
       lg: "text-4xl leading-[1.1]md:text-4xl lg:text-4xl ",
       xl: "text-5xl leading-[1.1] md:text-5xl lg:text-5xl",
-    },
-    color: {
-      default: "has-[strong]:text-neutral-600 [&_strong]:text-neutral-900",
-      purple: "text-c4c-purple-700 has-[strong]:text-c4c-neutral-600 [&_strong]:text-c4c-purple-700",
-      blue: "text-c4c-blue-800 has-[strong]:text-c4c-neutral-600 [&_strong]:text-c4c-blue-800",
-      invert: "text-white has-[strong]:text-neutral-200 [&_strong]:text-white",
-      "invert-purple": "text-white has-[strong]:text-c4c-purple-200 [&_strong]:text-white",
-      "invert-blue": "text-white has-[strong]:text-c4c-blue-200 [&_strong]:text-white",
-    },
+    }
   },
   defaultVariants: {
     size: "lg",
-    color: "default",
   },
 });
 
@@ -81,10 +72,10 @@ interface HeadingProps
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "p";
 }
 
-function Heading({ className, size, color, as: Component, ...props }: HeadingProps) {
+function Heading({ className, size, as: Component, ...props }: HeadingProps) {
   return (
     <Component
-      className={cn(headingVariants({ size, color, className }))}
+      className={cn(headingVariants({ size, className }))}
       {...props}
     />
   );

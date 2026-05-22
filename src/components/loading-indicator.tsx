@@ -27,29 +27,32 @@ function LoadingIndicator({
       )}
       {...props}
     >
+      <div className="bg-white rounded-full p-6">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={gifSrc}
-        alt=""
-        aria-hidden="true"
-        width={80}
-        height={80}
-        className="motion-reduce:hidden"
-      />
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={staticSrc}
-        alt=""
-        aria-hidden="true"
-        width={160}
-        height={78}
-        className="hidden h-auto w-40 motion-reduce:block"
-      />
+        <img
+          src={gifSrc}
+          alt=""
+          aria-hidden="true"
+          width={100}
+          height={100}
+          className="motion-reduce:hidden"
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={staticSrc}
+          alt=""
+          aria-hidden="true"
+          width={160}
+          height={78}
+          className="hidden h-auto w-40 motion-reduce:block"
+        />
+      </div>
       {label ? (
         <Body size="lead" aria-live="polite">{label}</Body>
       ) : (
         <span className="sr-only">Loading</span>
       )}
+      
     </div>
   )
 }

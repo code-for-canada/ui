@@ -50,6 +50,8 @@ export { Link, linkVariants } from "./components/link";
 
 export { Logo } from "./components/logo";
 
+export { PageContainer } from "./components/page-container";
+
 export {
   NavigationMenu,
   NavigationMenuContent,

@@ -1,51 +1,45 @@
-import * as React from "react"
-import { cn } from "../utils"
-import { Title, Subtitle } from "./typography"
-import { Button } from "./button"
-import { RoundedImage } from "./rounded-image"
+import * as React from "react";
+import { cn } from "../utils";
+import { Heading, Subtitle, Title } from "./typography";
+import { RoundedImage } from "./rounded-image";
+import { PageContainer } from "./page-container";
 
-type HeroColor = "white" | "blue" | "red" | "purple"
-
-interface HeroCta {
-  label: string
-  href: string
-}
+type HeroColor = "white" | "blue" | "red" | "purple";
 
 interface HeroImage {
-  src: string
-  alt: string
+  src: string;
+  alt: string;
 }
 
-interface HeroProps extends React.HTMLAttributes<HTMLElement> {
-  title: string
-  summary?: string
+interface HeroProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
+  /** Hero title — plain text or rich nodes (e.g. <strong>) */
+  title?: React.ReactNode;
+  /** Supporting summary — plain text or rich nodes */
+  summary?: React.ReactNode;
+  /** Call-to-action content, e.g. one or more <Button>s. Multiple are spaced automatically. */
+  cta?: React.ReactNode;
   /** Brand colour scheme applied to the hero background */
-  color?: HeroColor
+  color?: HeroColor;
   /** Use the dark (inverted) variant of the scheme */
-  invert?: boolean
-  /** Optional call-to-action button */
-  cta?: HeroCta
+  invert?: boolean;
   /** Optional image that overlaps the bottom edge of the hero */
-  image?: HeroImage
-  /** Override the inner container width/padding (matches PageContainer by default) */
-  containerClassName?: string
+  image?: HeroImage;
+  /** Extra classes for the inner PageContainer */
+  containerClassName?: string;
 }
-
-const containerClasses = "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"
 
 function Hero({
   title,
   summary,
+  cta,
   color = "white",
   invert = false,
-  cta,
   image,
   className,
   containerClassName,
   ...props
 }: HeroProps) {
-  const scheme = `scheme-${color}${invert ? "-inverted" : ""}`
-
+  const scheme = `scheme-${color}${invert ? "-inverted" : ""}`;
   return (
     <>
       <section
@@ -53,34 +47,49 @@ function Hero({
           scheme,
           "py-12 lg:py-20",
           image && "pb-32 lg:pb-48",
-          className
+          className,
         )}
         {...props}
       >
-        <div className={cn(containerClasses, containerClassName)}>
+        <PageContainer className={containerClassName}>
           <div className="space-y-6">
             <div className="space-y-4">
-              <Title className="fade-in text-[var(--scheme-muted)]">{title}</Title>
               {summary ? (
-                <Subtitle className="fade-in-delay-1 max-w-2xl text-[var(--scheme-text)]">
+                <Title
+                  as="h1"
+                  className="fade-in"
+                >
+                  {title}
+                </Title>
+              ) : (
+                <Heading
+                  as="h1"
+                  size="xl"
+                  className="fade-in"
+                >
+                  {title}
+                </Heading>
+              )}
+              {summary ? (
+                <Subtitle
+                  className="text-[var(--scheme-text)] fade-in-delay-1 max-w-2xl"
+                >
                   {summary}
                 </Subtitle>
               ) : null}
             </div>
             {cta ? (
-              <div className="fade-in-delay-2">
-                <Button asChild variant={invert ? "white-outline" : "default"}>
-                  <a href={cta.href}>{cta.label}</a>
-                </Button>
+              <div className="fade-in-delay-1 flex flex-wrap items-center gap-3">
+                {cta}
               </div>
             ) : null}
           </div>
-        </div>
+        </PageContainer>
       </section>
 
       {image ? (
         <section className="-mt-24 mb-8 lg:-mt-36">
-          <div className={cn(containerClasses, containerClassName)}>
+          <PageContainer className={containerClassName}>
             <RoundedImage
               src={image.src}
               alt={image.alt}
@@ -89,12 +98,12 @@ function Hero({
               className="h-full w-full"
               containerClassName="aspect-[16/9]"
             />
-          </div>
+          </PageContainer>
         </section>
       ) : null}
     </>
-  )
+  );
 }
 
-export { Hero }
-export type { HeroProps, HeroColor }
+export { Hero };
+export type { HeroProps, HeroColor };

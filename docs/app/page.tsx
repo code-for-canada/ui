@@ -14,6 +14,7 @@ import {
   Link,
   LoadingIndicator,
   Logo,
+  PageContainer,
   Prose,
   RoundedImage,
   Separator,
@@ -28,19 +29,22 @@ import { ArrowRight, Code, Heart, Users, MessageCircle, Search } from "lucide-re
 export default function DesignSystemPage() {
   return (
     <div className="relative">
-
       {/* Hero */}
       <Hero
-        color="blue"
-        title="The Code for Canada Design System"
-        summary="Shared primitives for every C4C application — typography, color, forms, buttons, and brand elements in one package."
-        cta={{ label: "View on GitHub", href: "https://github.com/code-for-canada/ui" }}
+        color="purple"
+        invert
+        title={<>Our Design System</>}
+        summary={<><strong>Shared primitives for Code for Canada.</strong> Typography, color, forms, buttons, and brand elements in one package.</>}
+        cta={
+            <Button asChild>
+              <a href="https://github.com/code-for-canada/ui">View on GitHub</a>
+            </Button>
+        }
       />
 
       {/* Logo */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Eyebrow className="mb-4">Brand</Eyebrow>
+        <PageContainer>
           <Heading as="h2" size="xl" className="mb-8">Logo</Heading>
           <div className="space-y-8">
             <div className="space-y-3">
@@ -67,19 +71,19 @@ export default function DesignSystemPage() {
               </div>
             </div>
           </div>
-        </div>
+        </PageContainer>
       </section>
 
       <Separator />
 
       {/* Typography */}
       <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Eyebrow className="mb-4">Primitives</Eyebrow>
+        <PageContainer>
           <Heading as="h2" size="xl" className="mb-8">Typography</Heading>
           <div className="bg-white rounded-3xl p-8 space-y-8">
             <div className="space-y-2">
               <Body size="xs" className="text-muted-foreground font-mono">Eyebrow</Body>
+              <Body size="xs" className="text-muted-foreground font-mono">Used only for distinguishing different sections when the heading is used for more editorial content.</Body>
               <div className="flex flex-wrap gap-6 items-center">
                 <Eyebrow>Default</Eyebrow>
                 <Eyebrow color="purple">Purple</Eyebrow>
@@ -89,7 +93,7 @@ export default function DesignSystemPage() {
             </div>
             <div className="space-y-2">
               <Body size="xs" className="text-muted-foreground font-mono">Title</Body>
-              <Title as="p">Title <strong>with emphasis.</strong></Title>
+              <Title as="p">Title text</Title>
             </div>
             <div className="space-y-2">
               <Body size="xs" className="text-muted-foreground font-mono">Subtitle</Body>
@@ -103,28 +107,18 @@ export default function DesignSystemPage() {
               <Heading as="h3" size="sm">Heading sm</Heading>
             </div>
             <div className="space-y-3">
-              <Body size="xs" className="text-muted-foreground font-mono">Heading (colors)</Body>
-              <div className="flex flex-wrap gap-x-8 gap-y-2">
-                <Heading as="p" size="md">Default</Heading>
-                <Heading as="p" size="md" color="purple">Purple</Heading>
-                <Heading as="p" size="md" color="blue">Blue</Heading>
-                <div className="rounded-xl bg-c4c-neutral-800 px-4 py-2"><Heading as="p" size="md" color="invert">Invert</Heading></div>
-              </div>
-            </div>
-            <div className="space-y-3">
               <Body size="xs" className="text-muted-foreground font-mono">Body</Body>
               <Body size="lead">Lead body text. <strong>Important emphasis.</strong></Body>
               <Body>Regular body text used for paragraphs and general content.</Body>
               <Body size="sm">Small body text for captions and supporting content.</Body>
             </div>
           </div>
-        </div>
+        </PageContainer>
       </section>
 
       {/* Colors */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Eyebrow className="mb-4">Tokens</Eyebrow>
+        <PageContainer>
           <Heading as="h2" size="xl" className="mb-2">Colors</Heading>
           <Prose className="mb-8">
             <p className="lead">Use level 600+ for text and interactive elements, and below 600 for backgrounds. Alternatively, for the inverted theme use 200 or lighter for text and 700 or darker for background. WCAG 2.2 compliant when used as documented.</p>
@@ -173,13 +167,12 @@ export default function DesignSystemPage() {
               </div>
             ))}
           </div>
-        </div>
+        </PageContainer>
       </section>
 
       {/* Scheme containers */}
       <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Eyebrow className="mb-4">Tokens</Eyebrow>
+        <PageContainer>
           <Heading as="h2" size="xl" className="mb-2">Color Schemes</Heading>
           <Prose className="mb-8">
             <p className="lead">Add <code>scheme-blue</code>, <code>scheme-purple</code>, <code>scheme-red</code>, or their <code>-inverted</code> variants to any container. Inner prose and components inherit the palette automatically.</p>
@@ -225,13 +218,12 @@ export default function DesignSystemPage() {
               </Prose>
             </div>
           </div>
-        </div>
+        </PageContainer>
       </section>
 
       {/* Buttons */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Eyebrow className="mb-4">Components</Eyebrow>
+        <PageContainer>
           <Heading as="h2" size="xl" className="mb-8">Buttons</Heading>
           <div className="space-y-6">
             <div>
@@ -282,13 +274,12 @@ export default function DesignSystemPage() {
               </div>
             </div>
           </div>
-        </div>
+        </PageContainer>
       </section>
 
       {/* Icon Circle */}
       <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Eyebrow className="mb-4">Components</Eyebrow>
+        <PageContainer>
           <Heading as="h2" size="xl" className="mb-8">Icon Circle</Heading>
           <div className="flex flex-wrap gap-6 items-center">
             <IconCircle><Code className="size-5" /></IconCircle>
@@ -297,13 +288,12 @@ export default function DesignSystemPage() {
             <IconCircle size="sm"><Code className="size-4" /></IconCircle>
             <IconCircle size="lg"><Code className="size-6" /></IconCircle>
           </div>
-        </div>
+        </PageContainer>
       </section>
 
       {/* Cards */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Eyebrow className="mb-4">Components</Eyebrow>
+        <PageContainer>
           <Heading as="h2" size="xl" className="mb-8">Cards</Heading>
           <div className="grid gap-6 md:grid-cols-3">
             {[
@@ -325,13 +315,12 @@ export default function DesignSystemPage() {
               </Card>
             ))}
           </div>
-        </div>
+        </PageContainer>
       </section>
 
       {/* Forms */}
       <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Eyebrow className="mb-4">Components</Eyebrow>
+        <PageContainer>
           <Heading as="h2" size="xl" className="mb-8">Form Fields</Heading>
           <Card className="max-w-md">
             <CardHeader>
@@ -357,13 +346,12 @@ export default function DesignSystemPage() {
               </form>
             </CardContent>
           </Card>
-        </div>
+        </PageContainer>
       </section>
 
       {/* Accordion */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Eyebrow className="mb-4">Components</Eyebrow>
+        <PageContainer>
           <Heading as="h2" size="xl" className="mb-8">Accordion</Heading>
           <Accordion type="single" collapsible className="max-w-xl">
             <AccordionItem value="item-1">
@@ -385,13 +373,30 @@ export default function DesignSystemPage() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
-        </div>
+        </PageContainer>
+      </section>
+
+       {/* Loading Indicator */}
+      <section className="py-16 bg-white">
+        <PageContainer>
+          <Heading as="h2" size="xl" className="mb-2">Loading Indicator</Heading>
+          <Prose className="mb-8">
+            <p className="lead">The animated brand mark for loading states. </p>
+          </Prose>
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-3xl bg-muted">
+              <LoadingIndicator />
+            </div>
+            <div className="rounded-3xl bg-muted">
+              <LoadingIndicator label="Loading projects…" />
+            </div>
+          </div>
+        </PageContainer>
       </section>
 
       {/* Prose */}
       <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Eyebrow className="mb-4">Components</Eyebrow>
+        <PageContainer>
           <Heading as="h2" size="xl" className="mb-8">Prose</Heading>
           <Prose className="bg-white rounded-3xl p-8">
             <h2>Rich Text Content</h2>
@@ -406,39 +411,21 @@ export default function DesignSystemPage() {
               <p>One wrapper, consistent brand voice across all rich text throughout the app.</p>
             </blockquote>
           </Prose>
-        </div>
+        </PageContainer>
       </section>
 
-      {/* Loading Indicator */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Eyebrow className="mb-4">Components</Eyebrow>
-          <Heading as="h2" size="xl" className="mb-2">Loading Indicator</Heading>
-          <Prose className="mb-8">
-            <p className="lead">The animated brand mark for loading states. The gif and reduced-motion fallback are bundled with the package — no assets to copy. Honours <code>prefers-reduced-motion</code> by swapping to a static logo.</p>
-          </Prose>
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-3xl bg-muted">
-              <LoadingIndicator />
-            </div>
-            <div className="rounded-3xl bg-muted">
-              <LoadingIndicator label="Loading projects…" />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <section className="bg-c4c-neutral-900 py-16 text-white">
-        <div className="container mx-auto px-4 max-w-5xl text-center">
+        <PageContainer className="text-center">
           <Logo variant="mark" inverted size="lg" className="mx-auto mb-6" />
           <Heading as="h2" size="lg" className="text-white mb-4">
             @code-for-canada/ui
           </Heading>
           <Body className="text-white/60">
-            See the README for install instructions, Poppins setup, and multi-repo development.
+            Made with ❤️ and 🤖.
           </Body>
-        </div>
+        </PageContainer>
       </section>
 
     </div>

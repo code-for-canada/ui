@@ -477,7 +477,7 @@
 .scheme-white {
   --scheme-bg: var(--background);
   --scheme-text: var(--color-c4c-neutral-900);
-  --scheme-muted: var(--color-c4c-neutral-900);
+  --scheme-muted: var(--color-c4c-neutral-600);
   --scheme-accent: var(--primary);
   --scheme-border: var(--border);
 }
