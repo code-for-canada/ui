@@ -6,7 +6,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-semibold transition-all duration-300 ease-in-out hover:rounded-[18px] active:rounded-6xl active:duration-350 active:delay-0 delay-40 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-[1.25em] shrink-0 [&_svg]:shrink-0 [&_svg]:transition-transform [&_svg]:duration-200 [&_svg]:ease-out [&_svg]:delay-40 active:[&_svg]:delay-0 motion-reduce:[&_svg]:transition-none hover:[&_svg:last-child]:translate-x-1 focus-visible:[&_svg:last-child]:translate-x-1 active:[&_svg:last-child]:translate-x-1 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-2 border-transparent",
+  "inline-flex items-center justify-center align-middle gap-2 whitespace-nowrap rounded-xl font-semibold transition-all duration-300 ease-in-out hover:rounded-[18px] active:rounded-6xl active:duration-350 active:delay-0 delay-40 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-[1.25em] shrink-0 [&_svg]:shrink-0 [&_[data-arrow]]:transition-transform [&_[data-arrow]]:duration-200 [&_[data-arrow]]:ease-out [&_[data-arrow]]:delay-40 active:[&_[data-arrow]]:delay-0 motion-reduce:[&_[data-arrow]]:transition-none hover:[&_[data-arrow]]:translate-x-0.5 focus-visible:[&_[data-arrow]]:translate-x-0.5 active:[&_[data-arrow]]:translate-x-1.5 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-2 border-transparent",
   {
     variants: {
       variant: {
@@ -57,7 +57,9 @@ function Button({
       {...props}
     >
       {withLink ? <Slottable>{children}</Slottable> : children}
-      {withLink && <ArrowRight className="size-[1.25em]" aria-hidden="true" />}
+      {withLink && (
+        <ArrowRight data-arrow="" className="size-[1.25em]" aria-hidden="true" />
+      )}
     </Comp>
   )
 }

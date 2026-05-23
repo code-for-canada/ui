@@ -80,7 +80,7 @@ function Hero({
                 ) : null}
               </div>
               {cta ? (
-                <div className="fade-in-delay-1 flex flex-wrap items-center gap-3">
+                <div className="fade-in-delay-1 flex flex-wrap items-center mt-8 gap-3">
                   {cta}
                 </div>
               ) : null}

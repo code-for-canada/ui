@@ -248,11 +248,11 @@ export default function DesignSystemPage() {
         <PageContainer>
           <Heading as="h2" size="xl" className="mb-3">Buttons</Heading>
           <Prose className="mb-8">
-            <p className="lead">Use buttons for actions and links for navigation. Lead with a single primary (default) button per view; use outline for secondary actions and ghost for low-emphasis or repeated ones. On dark or coloured backgrounds, switch to the white and white-outline variants.</p>
+            <p className="lead">Use buttons for calls to action and interactions on on the page. Lead with a single primary (default) button per view; use outline for secondary actions and ghost for low-emphasis or repeated ones. On dark or coloured backgrounds, switch to the white and white-outline variants.</p>
           </Prose>
           <div className="space-y-6">
             <div>
-              <Body size="sm" className="text-muted-foreground mb-3">Default</Body>
+              <Body size="sm" className="text-muted-foreground mb-3">Primary</Body>
               <div className="space-x-3">
                 <Button size="sm">Small</Button>
                 <Button>Default</Button>
