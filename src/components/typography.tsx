@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../utils";
 import { IconCircle } from "./icon-circle";
 
-// Title - Single-use hero/page title (fixed size)
+// Title - Single-use hero/page title when only a short 1-4 word intro is needed
 const titleVariants = cva(
   "text-[var(--scheme-muted)] tracking-tight leading-[0.95] text-balance text-pretty text-5xl md:text-7xl lg:text-7xl font-bold [&_strong]:animate-gradient [&_strong]:bg-linear-to-r/oklch [&_strong]:from-purple-900  [&_strong]:via-red-800 [&_strong]:via-25% [&_strong]:to-red-600 [&_strong]:bg-[length:80%] [&_strong]:bg-clip-text [&_strong]:bg-repeat-round [&_strong]:text-transparent"
 );
@@ -53,7 +53,10 @@ function Subtitle({
   );
 }
 
-// Heading - General headings with configurable size (decoupled from semantic level)
+
+/** 
+ * Heading - General headings with configurable size (decoupled from semantic level)
+ */
 const headingVariants = cva("tracking-tight text-balance font-semibold has-[strong]:font-semibold [&_strong]:font-bold text-[var(--scheme-muted)] has-[strong]:text-[var(--scheme-muted)] [&_strong]:text-[var(--scheme-text)]", {
   variants: {
     size: {
@@ -74,7 +77,10 @@ interface HeadingProps
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "p";
 }
 
-/** Section heading. `as` = outline level, `size` = visual weight (independent); colour follows the scheme. `size="xl"` can head a page and wrap `<strong>` for emphasis — keep bold sparing. */
+
+/** 
+ * Section heading. `as` = h1-h5 outline level, `size` = visual hierarchy; colour follows the parent's theme automatically. `size="xl"` can head a page. Wrap `<strong>` for bold emphasis — but use sparingly for strong effect. 
+ */
 function Heading({ className, size, as: Component, ...props }: HeadingProps) {
   return (
     <Component
@@ -113,7 +119,7 @@ interface EyebrowProps
   icon?: React.ReactNode;
 }
 
-/** Uppercase section label above a heading. Use sparingly — only with longer editorial headings to aid scanning. Keep to 1–4 words; `icon` shows a given icon with a coloured circle. */
+/** Uppercase section label above a heading. Use sparingly — only with longer "editorial" headings to aid scanning. Keep to 1–4 words; Optional `icon` shows a given icon with a coloured circle. */
 function Eyebrow({
   className,
   size,

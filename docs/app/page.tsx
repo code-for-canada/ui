@@ -34,7 +34,7 @@ export default function DesignSystemPage() {
       <Hero
         color="purple"
         invert
-        title={<>Our Design System</>}
+        title={<>Design System</>}
         summary={<>Shared primitives for Code for Canada that help us consistently <strong>communicate who we are across the web.</strong></>}
         cta={
             <Button withLink>
