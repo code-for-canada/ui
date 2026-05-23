@@ -1,11 +1,12 @@
 import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
+import { Slot, Slottable } from "@radix-ui/react-slot"
+import { ArrowRight } from "lucide-react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "../utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-semibold transition-all duration-300 ease-in-out hover:rounded-[18px] active:rounded-6xl active:duration-350 active:delay-0 delay-40 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 [&_svg]:transition-transform [&_svg]:duration-200 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-2 border-transparent",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-semibold transition-all duration-300 ease-in-out hover:rounded-[18px] active:rounded-6xl active:duration-350 active:delay-0 delay-40 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-[1.25em] shrink-0 [&_svg]:shrink-0 [&_svg]:transition-transform [&_svg]:duration-200 [&_svg]:ease-out [&_svg]:delay-40 active:[&_svg]:delay-0 motion-reduce:[&_svg]:transition-none hover:[&_svg:last-child]:translate-x-1 focus-visible:[&_svg:last-child]:translate-x-1 active:[&_svg:last-child]:translate-x-1 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-2 border-transparent",
   {
     variants: {
       variant: {
@@ -24,9 +25,6 @@ const buttonVariants = cva(
         default: "h-auto py-3 px-6 text-base",
         sm: "h-auto py-2 px-4 text-sm",
         lg: "h-auto py-3 px-8 text-lg",
-        icon: "size-10 p-0",
-        "icon-sm": "size-8 p-0",
-        "icon-lg": "size-12 p-0",
       },
     },
     defaultVariants: {
@@ -36,18 +34,19 @@ const buttonVariants = cva(
   }
 )
 
-/** Action button. `variant`: default (primary) · outline (secondary) · ghost (low-emphasis) · white / white-outline (dark backgrounds). `asChild` renders as another element (e.g. an `<a>`). Prefer one primary per view. */
+/** Action button. `variant`: default (primary) · outline (secondary) · ghost (low-emphasis) · white / white-outline (dark backgrounds). `withLink` renders as a child `<a>` and appends a navigation arrow. Prefer one primary per view. */
 function Button({
   className,
   variant = "default",
   size = "default",
-  asChild = false,
+  withLink = false,
+  children,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
+    withLink?: boolean
   }) {
-  const Comp = asChild ? Slot : "button"
+  const Comp = withLink ? Slot : "button"
 
   return (
     <Comp
@@ -56,7 +55,10 @@ function Button({
       data-size={size}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
-    />
+    >
+      {withLink ? <Slottable>{children}</Slottable> : children}
+      {withLink && <ArrowRight className="size-[1.25em]" aria-hidden="true" />}
+    </Comp>
   )
 }
 

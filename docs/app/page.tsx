@@ -25,6 +25,7 @@ import {
   AccordionTrigger,
 } from "@code-for-canada/ui";
 import { ArrowRight, Code, Heart, Users, MessageCircle, Search } from "lucide-react";
+import heroIcon from "@/icon.png";
 
 export default function DesignSystemPage() {
   return (
@@ -36,7 +37,7 @@ export default function DesignSystemPage() {
         title={<>Our Design System</>}
         summary={<>Shared primitives for Code for Canada that help us consistently <strong>communicate who we are across the web.</strong></>}
         cta={
-            <Button asChild>
+            <Button withLink>
               <a href="https://github.com/code-for-canada/ui">View on GitHub</a>
             </Button>
         }
@@ -257,7 +258,8 @@ export default function DesignSystemPage() {
                 <Button>Default</Button>
                 <Button size="lg">Large</Button>
                 <Button disabled>Disabled</Button>
-                <Button><Heart className="size-4" /> With Icon</Button>
+                <Button><Heart  /> With Icon</Button>
+                <Button withLink><a href="#">Button with a Link</a></Button>
               </div>
             </div>
             <div>
@@ -286,7 +288,7 @@ export default function DesignSystemPage() {
             </div>
             <div>
               <Body size="sm" className="text-muted-foreground mb-3">Link</Body>
-              <Body className="text-muted-foreground italic mb-3">Links navigate; buttons act. Use the default animated underline inline in text, plain for a quieter underline, and inverse on dark backgrounds. External links open in a new tab automatically.</Body>
+              <Body className="text-muted-foreground italic mb-3">Use the default animated underline inline in text, plain for a quieter underline, and inverse on dark backgrounds. External links open in a new tab automatically.</Body>
               <div className="flex flex-wrap items-center gap-8">
                 <Link href="#">Default Link</Link>
                 <Link href="#" variant="plain">Plain Link</Link>

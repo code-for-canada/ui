@@ -113,7 +113,7 @@ interface EyebrowProps
   icon?: React.ReactNode;
 }
 
-/** Uppercase section label above a heading. Use sparingly — only with longer editorial headlines to aid scanning, not on every section. Keep to 1–4 words; `icon` shows it in a coloured circle. */
+/** Uppercase section label above a heading. Use sparingly — only with longer editorial headings to aid scanning. Keep to 1–4 words; `icon` shows a given icon with a coloured circle. */
 function Eyebrow({
   className,
   size,
