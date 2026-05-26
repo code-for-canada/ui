@@ -1,15 +1,27 @@
 import * as React from "react"
-import Image, { type ImageProps } from "next/image"
 import { cn } from "../utils"
 
-interface RoundedImageProps extends Omit<ImageProps, "className"> {
-  className?: string
+interface RoundedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+  /** Classes for the rounded frame (sizes the image — e.g. width/height or aspect ratio). */
   containerClassName?: string
+  /** Load eagerly with high fetch priority — use for above-the-fold images. Defaults to lazy. */
+  priority?: boolean
 }
 
-/** Next.js Image cropped into a rounded frame (object-cover). `containerClassName` sizes the frame (e.g. aspect ratio); `className` styles the image. */
+/** Image cropped into a rounded frame (object-cover). `containerClassName` sizes the frame (e.g. aspect ratio); `className` styles the image. Lazy-loads by default — set `priority` for above-the-fold images, and pass `srcSet`/`sizes` for responsive sources. */
 const RoundedImage = React.forwardRef<HTMLImageElement, RoundedImageProps>(
-  ({ className, containerClassName, alt, src, ...props }, ref) => {
+  (
+    {
+      className,
+      containerClassName,
+      alt = "",
+      priority = false,
+      loading,
+      fetchPriority,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <div
         className={cn(
@@ -17,11 +29,13 @@ const RoundedImage = React.forwardRef<HTMLImageElement, RoundedImageProps>(
           containerClassName
         )}
       >
-        <Image
+        <img
           ref={ref}
           alt={alt}
           className={cn("h-full w-full object-cover", className)}
-          src={src}
+          loading={loading ?? (priority ? "eager" : "lazy")}
+          fetchPriority={fetchPriority ?? (priority ? "high" : undefined)}
+          decoding="async"
           {...props}
         />
       </div>

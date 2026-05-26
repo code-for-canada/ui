@@ -16,6 +16,7 @@
   ],
   "exports": {
     ".": "./src/index.ts",
+    "./router-link": "./src/router-link.tsx",
     "./styles.css": "./src/styles.css"
   },
   "scripts": {
@@ -27,7 +28,6 @@
   },
   "peerDependencies": {
     "@tailwindcss/typography": ">=0.5",
-    "next": ">=14",
     "react": ">=18",
     "react-dom": ">=18",
     "tailwindcss": ">=4"

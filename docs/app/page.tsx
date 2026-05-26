@@ -16,7 +16,6 @@ import {
   Logo,
   PageContainer,
   Prose,
-  RoundedImage,
   Separator,
   Title,
   Accordion,

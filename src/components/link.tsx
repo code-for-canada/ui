@@ -1,5 +1,5 @@
 import * as React from "react"
-import NextLink from "next/link"
+import RouterLink from "@code-for-canada/ui/router-link"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../utils"
 
@@ -54,14 +54,14 @@ interface LinkProps
   href: string
 }
 
-/** Inline text link. Auto-detects internal (`/`, `#` → Next.js Link) vs external (opens in a new tab). `variant="plain"` for a quieter underline; `color="inverse"` on dark backgrounds. */
+/** Inline text link. Auto-detects internal (`/`, `#`) vs external (opens in a new tab). Internal hrefs render via the router element (plain `<a>` by default; alias `@code-for-canada/ui/router-link` to `next/link` for client-side nav). `variant="plain"` for a quieter underline; `color="inverse"` on dark backgrounds. */
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   ({ className, variant, color, href, ...props }, ref) => {
     const isInternal = href.startsWith("/") || href.startsWith("#")
 
     if (isInternal) {
       return (
-        <NextLink
+        <RouterLink
           href={href}
           className={cn(linkVariants({ variant, color, className }))}
           ref={ref}
