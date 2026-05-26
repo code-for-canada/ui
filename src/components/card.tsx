@@ -2,13 +2,29 @@ import * as React from "react"
 
 import { cn } from "../utils"
 
-/** Rounded content surface for a single idea. Compose `CardHeader` (icon + heading + description), `CardContent`, and `CardFooter` (one action/link). */
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+export type CardScheme =
+  | "white"
+  | "white-inverted"
+  | "blue"
+  | "blue-inverted"
+  | "purple"
+  | "purple-inverted"
+  | "red"
+  | "red-inverted"
+
+interface CardProps extends React.ComponentProps<"div"> {
+  /** Optional colour scheme applied to the card. Sets the background, typography, and icon colours from the matching `scheme-*` palette. Omit to keep the default card surface. */
+  scheme?: CardScheme
+}
+
+/** Rounded content surface for a single idea. Compose `CardHeader` (icon + heading + description), `CardContent`, and `CardFooter` (one action/link). Pass `scheme` (e.g. `"blue-inverted"`) to theme the card — its background, typography, and icon adapt to that palette. */
+function Card({ className, scheme, ...props }: CardProps) {
   return (
     <div
       data-slot="card"
       className={cn(
         "flex flex-col rounded-3xl overflow-hidden pb-6 bg-card text-card-foreground border",
+        scheme && `scheme-${scheme}`,
         className
       )}
       {...props}

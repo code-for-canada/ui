@@ -98,10 +98,11 @@ export default function DesignSystemPage() {
           <div className="bg-white rounded-3xl p-8 space-y-8">
             <div className="space-y-2">
               <Body className="text-muted-foreground font-mono">Eyebrow</Body>
-              <Body className="text-muted-foreground font-mono italic">Use eyebrows sparingly — only alongside longer editorial headlines to improve scanning, not on every section. Limit to 1&ndash;4 words, place above a Heading or Title, optionally with a circle icon.</Body>
+              <Body className="text-muted-foreground font-mono italic">Use eyebrows sparingly — only alongside longer editorial headlines to improve scanning, not on every section. Limit to 1&ndash;4 words, place above a Heading or Title, optionally with a circle icon. Colour follows the surrounding scheme (brand red when none is set); <code className="font-mono">color=&quot;red&quot;</code> pins to brand red regardless of scheme.</Body>
               <div className="flex flex-wrap gap-6 items-center">
                 <Eyebrow>Default</Eyebrow>
                 <Eyebrow icon={<MessageCircle size={18} />}>With icon</Eyebrow>
+                <Eyebrow color="red">Branded red</Eyebrow>
               </div>
             </div>
             <div className="space-y-2">
@@ -207,7 +208,7 @@ export default function DesignSystemPage() {
               </Prose>
             </div>
             <div className="scheme-purple rounded-3xl p-8">
-              <Eyebrow color="purple" icon={<Search size={16} />}>Research</Eyebrow>
+              <Eyebrow icon={<Search size={16} />}>Research</Eyebrow>
               <Prose size="lg" className="mt-4 max-w-none">
                 <h3>Purple</h3>
                 <p>Reflective, strategic, or insight-driven content.</p>
@@ -347,6 +348,22 @@ export default function DesignSystemPage() {
               </Card>
             ))}
           </div>
+
+          <Prose className="mt-12 mb-6">
+            <p>A card can also apply a scheme to itself — pass <code>scheme</code> and the background, typography, and icon inside all adapt to that palette.</p>
+          </Prose>
+          <Card scheme="blue-inverted" className="max-w-md">
+            <CardHeader>
+              <IconCircle><Heart className="size-5" /></IconCircle>
+              <Heading as="h3" size="sm">Inside a dark blue scheme</Heading>
+              <Body>The card sets <code className="font-mono text-base">scheme=&quot;blue-inverted&quot;</code>; everything inside follows that palette automatically.</Body>
+            </CardHeader>
+            <CardFooter>
+              <Link color="inverse" href="#" className="inline-flex items-center gap-2">
+                Learn more <ArrowRight className="size-4" />
+              </Link>
+            </CardFooter>
+          </Card>
         </PageContainer>
       </section>
 

@@ -91,26 +91,28 @@ function Heading({ className, size, as: Component, ...props }: HeadingProps) {
 }
 
 // Eyebrow - Uppercase section labels
-const eyebrowVariants = cva("font-semibold uppercase leading-none", {
-  variants: {
-    size: {
-      sm: "text-base",
-      default: "text-lg",
-      lg: "text-xl",
+// Default text follows the surrounding scheme (--scheme-muted), falling back
+// to the brand primary when no scheme is set. `color="red"` forces brand red.
+const eyebrowVariants = cva(
+  "font-semibold uppercase leading-none text-[var(--scheme-muted,var(--primary))]",
+  {
+    variants: {
+      size: {
+        sm: "text-base",
+        default: "text-lg",
+        lg: "text-xl",
+      },
+      color: {
+        red: "text-c4c-red-600",
+      },
     },
-    color: {
-      red: "text-primary",
-      purple: "text-c4c-purple-800",
-      blue: "text-c4c-blue-800",
+    defaultVariants: {
+      size: "default",
     },
-  },
-  defaultVariants: {
-    size: "default",
-    color: "red",
-  },
-});
+  }
+);
 
-export type EyebrowColor = "red" | "purple" | "blue"
+export type EyebrowColor = "red"
 
 interface EyebrowProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, "color">,
@@ -119,7 +121,7 @@ interface EyebrowProps
   icon?: React.ReactNode;
 }
 
-/** Uppercase section label above a heading. Use sparingly — only with longer "editorial" headings to aid scanning. Keep to 1–4 words; Optional `icon` shows a given icon with a coloured circle. */
+/** Uppercase section label above a heading. Use sparingly — only with longer "editorial" headings to aid scanning. Keep to 1–4 words. Colour follows the surrounding scheme (or the brand red when no scheme is set); `color="red"` pins to brand red regardless of scheme. Optional `icon` shows a matching circle. */
 function Eyebrow({
   className,
   size,
@@ -151,20 +153,26 @@ function Eyebrow({
 }
 
 // Body - Paragraph text with lead variant
-const bodyVariants = cva("text-foreground font-medium max-w-[65ch] [&_strong]:text-black", {
-  variants: {
-    size: {
-      xs: "text-sm leading-snug",
-      sm: "text-base leading-snug",
-      default: "text-lg leading-snug",
-      lg: "text-xl leading-normal",
-      lead: "text-xl tracking-tight font-medium has-[strong]:text-neutral-600 [&_strong]:font-semibold",
+// Text follows the surrounding scheme (--scheme-text), falling back to
+// --foreground when no scheme is set. `lead` dims the paragraph (scheme-muted)
+// when it contains <strong>, so the bold phrase pops back to scheme-text.
+const bodyVariants = cva(
+  "text-[var(--scheme-text,var(--foreground))] font-medium max-w-[65ch]",
+  {
+    variants: {
+      size: {
+        xs: "text-sm leading-snug",
+        sm: "text-base leading-snug",
+        default: "text-lg leading-snug",
+        lg: "text-xl leading-normal",
+        lead: "text-xl tracking-tight font-medium has-[strong]:text-[var(--scheme-muted,var(--muted-foreground))] [&_strong]:font-semibold [&_strong]:text-[var(--scheme-text,var(--foreground))]",
+      },
     },
-  },
-  defaultVariants: {
-    size: "default",
-  },
-});
+    defaultVariants: {
+      size: "default",
+    },
+  }
+);
 
 interface BodyProps
   extends React.HTMLAttributes<HTMLParagraphElement>,
@@ -172,7 +180,7 @@ interface BodyProps
   as?: "p" | "span" | "div";
 }
 
-/** Paragraph text. `lead` = intro paragraph, `default` = body, `sm`/`xs` = captions. */
+/** Paragraph text; colour follows the surrounding scheme. `lead` = intro paragraph (dims when it contains `<strong>` so the bold phrase pops), `default` = body, `sm`/`xs` = captions. */
 function Body({ className, size, as: Component = "p", ...props }: BodyProps) {
   return (
     <Component
