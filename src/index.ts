@@ -46,6 +46,12 @@ export { Input } from "./components/input";
 
 export { Label } from "./components/label";
 
+export { Checkbox, CheckboxGroup } from "./components/checkbox";
+
+export { RadioGroup, RadioGroupItem } from "./components/radio-group";
+
+export { Textarea } from "./components/textarea";
+
 export { Link, linkVariants } from "./components/link";
 
 export { Logo } from "./components/logo";

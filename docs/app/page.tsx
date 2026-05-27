@@ -5,7 +5,11 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
+  Checkbox,
+  CheckboxGroup,
   Eyebrow,
+  FieldLegend,
+  FieldSet,
   Heading,
   Hero,
   IconCircle,
@@ -16,7 +20,10 @@ import {
   Logo,
   PageContainer,
   Prose,
+  RadioGroup,
+  RadioGroupItem,
   Separator,
+  Textarea,
   Title,
   Accordion,
   AccordionContent,
@@ -372,32 +379,62 @@ export default function DesignSystemPage() {
         <PageContainer>
           <Heading as="h2" size="xl" className="mb-3">Form Fields</Heading>
           <Prose className="mb-8">
-            <p className="lead">Pair a Label with an Input and connect them (the label&rsquo;s htmlFor matches the input&rsquo;s id) so the form stays accessible. Keep helper text short and place it directly under the field. For richer forms — descriptions, validation errors, or horizontal layouts — compose the Field primitives.</p>
+            <p className="lead">Keep forms short and the path forward obvious. Use plain-language labels, place helper text directly under the field it explains, and ask one thing per field. For longer answers use a textarea — add dictation when typing would slow people down. For choices, use radios when there&rsquo;s exactly one right answer and checkboxes when more than one applies; both render as full-width rows so the whole row is easy to tap or click.</p>
           </Prose>
-          <Card className="max-w-md">
-            <CardHeader>
-              <Heading as="h3" size="sm">Contact Us</Heading>
-              <Body className="text-muted-foreground">Get in touch with our team</Body>
-            </CardHeader>
-            <CardContent>
-              <form className="space-y-4">
-                <div className="space-y-1.5">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Your name" />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="you@example.com" />
-                  <Body className="text-muted-foreground">We&apos;ll never share your email.</Body>
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="message">Message</Label>
-                  <Input id="message" placeholder="How can we help?" />
-                </div>
-                <Button type="submit" className="w-full">Send Message</Button>
-              </form>
-            </CardContent>
-          </Card>
+          <div className="grid gap-6 md:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <Heading as="h3" size="sm">Contact us</Heading>
+                <Body className="text-muted-foreground">Open-ended fields for free-form answers.</Body>
+              </CardHeader>
+              <CardContent>
+                <form className="space-y-4">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="name">Name</Label>
+                    <Input id="name" placeholder="Your name" />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" placeholder="you@example.com" />
+                    <Body className="text-muted-foreground">We&apos;ll never share your email.</Body>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea id="message" placeholder="How can we help?" withDictation />
+                    <Body className="text-muted-foreground">Use the mic to dictate instead of typing.</Body>
+                  </div>
+                  <Button type="submit" className="w-full">Send message</Button>
+                </form>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <Heading as="h3" size="sm">Tell us about you</Heading>
+                <Body className="text-muted-foreground">Pick-one and pick-many choices.</Body>
+              </CardHeader>
+              <CardContent>
+                <form className="space-y-6">
+                  <FieldSet>
+                    <FieldLegend>How did you hear about us?</FieldLegend>
+                    <RadioGroup defaultValue="search" name="hear-about-us">
+                      <RadioGroupItem value="search">Web search</RadioGroupItem>
+                      <RadioGroupItem value="friend">A friend or colleague</RadioGroupItem>
+                      <RadioGroupItem value="event">At an event</RadioGroupItem>
+                    </RadioGroup>
+                  </FieldSet>
+                  <FieldSet>
+                    <FieldLegend>What are you interested in?</FieldLegend>
+                    <CheckboxGroup>
+                      <Checkbox name="interest" value="research" defaultChecked>User research</Checkbox>
+                      <Checkbox name="interest" value="design">Service design</Checkbox>
+                      <Checkbox name="interest" value="engineering">Engineering</Checkbox>
+                    </CheckboxGroup>
+                  </FieldSet>
+                  <Button type="submit" className="w-full">Save preferences</Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
         </PageContainer>
       </section>
 
