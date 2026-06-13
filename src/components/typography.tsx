@@ -92,7 +92,8 @@ function Heading({ className, size, as: Component, ...props }: HeadingProps) {
 
 // Eyebrow - Uppercase section labels
 // Default text follows the surrounding scheme (--scheme-muted), falling back
-// to the brand primary when no scheme is set. `color="red"` forces brand red.
+// to the brand primary when no scheme is set. Passing `color` pins to a fixed
+// brand value regardless of scheme.
 const eyebrowVariants = cva(
   "font-semibold uppercase leading-none text-[var(--scheme-muted,var(--primary))]",
   {
@@ -104,6 +105,8 @@ const eyebrowVariants = cva(
       },
       color: {
         red: "text-c4c-red-600",
+        purple: "text-c4c-purple-800",
+        blue: "text-c4c-blue-800",
       },
     },
     defaultVariants: {
@@ -112,7 +115,7 @@ const eyebrowVariants = cva(
   }
 );
 
-export type EyebrowColor = "red"
+export type EyebrowColor = "red" | "purple" | "blue"
 
 interface EyebrowProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, "color">,
@@ -121,7 +124,7 @@ interface EyebrowProps
   icon?: React.ReactNode;
 }
 
-/** Uppercase section label above a heading. Use sparingly — only with longer "editorial" headings to aid scanning. Keep to 1–4 words. Colour follows the surrounding scheme (or the brand red when no scheme is set); `color="red"` pins to brand red regardless of scheme. Optional `icon` shows a matching circle. */
+/** Uppercase section label above a heading. Use sparingly — only with longer "editorial" headings to aid scanning. Keep to 1–4 words. Colour follows the surrounding scheme (or the brand red when no scheme is set); pass `color` (red | purple | blue) to pin a fixed brand colour regardless of scheme. Optional `icon` shows a matching circle. */
 function Eyebrow({
   className,
   size,
