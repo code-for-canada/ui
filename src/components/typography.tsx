@@ -93,8 +93,7 @@ function Heading({ className, size, as: Component, ...props }: HeadingProps) {
 // Eyebrow - Uppercase section labels
 // Default text follows the surrounding scheme (--scheme-muted), falling back
 // to the brand primary when no scheme is set. Passing `color` pins to a fixed
-// brand value regardless of scheme. Shades match IconCircle's so eyebrow + icon
-// read as a set when both appear.
+// brand value regardless of scheme.
 const eyebrowVariants = cva(
   "font-semibold uppercase leading-none text-[var(--scheme-muted,var(--primary))]",
   {
@@ -107,7 +106,7 @@ const eyebrowVariants = cva(
       color: {
         red: "text-c4c-red-600",
         purple: "text-c4c-purple-800",
-        blue: "text-c4c-blue-600",
+        blue: "text-c4c-blue-800",
       },
     },
     defaultVariants: {
