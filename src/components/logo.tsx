@@ -34,7 +34,7 @@ function Logo({
   ...props
 }: LogoProps) {
   const dimensions = variant === "mark" ? markSizeMap[size] : sizeMap[size];
-  const fillColor = inverted ? "#ffffff" : "#D52035";
+  const fillColor = inverted ? "#ffffff" : "#DE242B";
 
   if (variant === "mark") {
     // Just the icon portion of the logo
