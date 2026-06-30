@@ -29,7 +29,7 @@ function RadioGroupItem({
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
       className={cn(
-        "group/radio-group-item flex w-full cursor-pointer items-center gap-3 rounded-xl border-2 border-input bg-white px-4 py-3 text-left text-base transition-colors",
+        "group/radio-group-item flex w-full cursor-pointer items-center gap-3 rounded-xl border-2 border-input bg-background px-4 py-3 text-left text-base transition-colors",
         "hover:bg-muted",
         "data-[state=checked]:border-foreground data-[state=checked]:bg-muted",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-ring focus-visible:ring-offset-2",

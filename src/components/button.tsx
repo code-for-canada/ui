@@ -13,7 +13,7 @@ const buttonVariants = cva(
         default:
           "bg-primary text-primary-foreground border-primary hover:bg-primary-dimmed hover:border-primary-dimmed",
         outline:
-          "border-muted-foreground text-muted-foreground bg-white  hover:bg-muted",
+          "border-muted-foreground text-muted-foreground bg-background hover:bg-muted",
         ghost:
           "text-muted-foreground border-transparent hover:bg-muted hover:text-muted-foreground",
         white:

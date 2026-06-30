@@ -36,7 +36,7 @@ function Textarea({
       data-slot="textarea"
       ref={setRefs}
       className={cn(
-        "placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground border-input min-h-28 w-full min-w-0 resize-y rounded-md border-2 bg-white px-3 py-2 text-base transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input min-h-28 w-full min-w-0 resize-y rounded-md border-2 bg-background px-3 py-2 text-base transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-ring focus-visible:ring-offset-2",
         "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
         showMic && "pr-14",
@@ -63,7 +63,7 @@ function Textarea({
           "disabled:pointer-events-none disabled:opacity-50",
           listening
             ? "border-primary bg-primary text-white animate-pulse motion-reduce:animate-none"
-            : "border-input bg-white text-muted-foreground hover:bg-muted"
+            : "border-input bg-background text-muted-foreground hover:bg-muted"
         )}
       >
         <Mic aria-hidden="true" className="size-5" />

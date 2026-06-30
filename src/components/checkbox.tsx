@@ -31,7 +31,7 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "group/checkbox flex w-full cursor-pointer items-center gap-3 rounded-xl border-2 border-input bg-white px-4 py-3 text-left text-base transition-colors",
+        "group/checkbox flex w-full cursor-pointer items-center gap-3 rounded-xl border-2 border-input bg-background px-4 py-3 text-left text-base transition-colors",
         "hover:bg-muted",
         "data-[state=checked]:border-foreground data-[state=checked]:bg-muted",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-ring focus-visible:ring-offset-2",
@@ -43,7 +43,7 @@ function Checkbox({
       <span
         aria-hidden="true"
         className={cn(
-          "grid size-6 shrink-0 place-items-center rounded-md border-2 border-muted-foreground/40 bg-white text-white transition-colors",
+          "grid size-6 shrink-0 place-items-center rounded-md border-2 border-muted-foreground/40 bg-background text-background transition-colors",
           "group-data-[state=checked]/checkbox:border-foreground group-data-[state=checked]/checkbox:bg-foreground"
         )}
       >
