@@ -1,15 +1,19 @@
 import * as React from "react";
 import { cn } from "../utils";
-import { Heading, Subtitle, Title } from "./typography";
+import { Body, Eyebrow, Heading, Subtitle, Title } from "./typography";
 import { PageContainer } from "./page-container";
 
 type HeroColor = "white" | "blue" | "red" | "purple";
 
 interface HeroProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
+  /** Optional label rendered above the title, e.g. a category or section name */
+  eyebrow?: React.ReactNode;
   /** Hero title — plain text or rich nodes (e.g. <strong>) */
   title?: React.ReactNode;
   /** Supporting summary — plain text or rich nodes */
   summary?: React.ReactNode;
+  /** Small byline row (e.g. author, date) rendered below the summary */
+  meta?: React.ReactNode;
   /** Call-to-action content, e.g. one or more <Button>s. Multiple are spaced automatically. */
   cta?: React.ReactNode;
   /** Brand colour scheme applied to the hero background */
@@ -24,8 +28,10 @@ interface HeroProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
 
 /** Page hero: a scheme-coloured banner with a title, optional summary, CTAs, and a side slot. */
 function Hero({
+  eyebrow,
   title,
   summary,
+  meta,
   cta,
   color = "white",
   invert = false,
@@ -40,9 +46,7 @@ function Hero({
       <section
         className={cn(
           scheme,
-          "pt-12 lg:pt-20",
-          // Extra bottom padding on mobile gives the overlapping image colour to sit on.
-          secondary ? "pb-44 lg:pb-20" : "pb-12 lg:pb-20",
+          "pt-12 lg:pt-20 pb-12 lg:pb-20",
           className,
         )}
         {...props}
@@ -50,33 +54,39 @@ function Hero({
         <PageContainer className={containerClassName}>
           <div
             className={cn(
-              secondary && "lg:grid lg:grid-cols-2 lg:items-center lg:gap-16",
+              secondary && "lg:grid lg:grid-cols-2 lg:items-center lg:gap-4",
             )}
           >
             <div className="space-y-6">
               <div className="space-y-4">
+                {eyebrow ? (
+                  <Eyebrow className="fade-in">{eyebrow}</Eyebrow>
+                ) : null}
+
+                <Heading
+                  as="h1"
+                  size="lg"
+                  className="text-[var(--scheme-muted)] fade-in"
+                >
+                  {title}
+                </Heading>
+
                 {summary ? (
-                  <Title
-                    as="h1"
-                    className="fade-in"
-                  >
-                    {title}
-                  </Title>
-                ) : (
-                  <Heading
-                    as="h1"
-                    size="xl"
-                    className="fade-in"
-                  >
-                    {title}
-                  </Heading>
-                )}
-                {summary ? (
-                  <Subtitle
+                  <Body
+                    as="p"
+                    size="lead"
                     className="text-[var(--scheme-text)] fade-in-delay-1 max-w-2xl"
                   >
                     {summary}
-                  </Subtitle>
+                  </Body>
+                ) : null}
+                {meta ? (
+                  <Body
+                    size="sm"
+                    className="text-[var(--scheme-text)] fade-in-delay-1"
+                  >
+                    {meta}
+                  </Body>
                 ) : null}
               </div>
               {cta ? (
@@ -98,11 +108,19 @@ function Hero({
         </PageContainer>
       </section>
 
-      {/* Mobile: stacks below and overlaps the hero's bottom edge by ~half the image */}
+      {/* Mobile: stacks below the hero. The scheme colour continues behind the top
+          ~60% of the image (sized as a share of the image itself, so it works at any
+          image height). */}
       {secondary ? (
-        <div className="fade-in-delay-2 -mt-40 mb-8 lg:hidden">
+        <div className="relative mb-8 lg:hidden">
+          <div
+            className={cn(scheme, "pointer-events-none absolute inset-x-0 top-0 h-3/5")}
+            aria-hidden
+          />
           <PageContainer className={containerClassName}>
-            <div className="w-full max-w-md max-h-[28rem]">{secondary}</div>
+            <div className="fade-in-delay-2 relative w-full max-w-md max-h-[28rem]">
+              {secondary}
+            </div>
           </PageContainer>
         </div>
       ) : null}

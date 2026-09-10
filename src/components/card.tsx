@@ -23,7 +23,7 @@ function Card({ className, scheme, ...props }: CardProps) {
     <div
       data-slot="card"
       className={cn(
-        "flex flex-col rounded-3xl overflow-hidden pb-6 bg-card text-card-foreground border",
+        "flex flex-col rounded-3xl overflow-hidden pb-6 bg-card text-card-foreground",
         scheme && `scheme-${scheme}`,
         className
       )}

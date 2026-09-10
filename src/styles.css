@@ -276,41 +276,21 @@
   }
 }
 
-.reveal {
-  animation: reveal ease-out both;
+/* Subtle editorial drift for prose imagery: the figure rises a touch as it crosses the
+   viewport. Scroll-linked but small and continuous, so it reads as depth — not an entrance. */
+.editorial-drift {
+  animation: editorial-drift linear both;
   animation-timeline: view();
-  animation-range: entry 0% cover 15%;
+  animation-range: entry 0% exit 100%;
 }
 
-@keyframes reveal {
-  from { opacity: 0.95;  transform: translateY(20rem) scaleX(0.92); }
-  to   { opacity: 1; transform: translateY(0) scaleX(1); }
+@keyframes editorial-drift {
+  from { transform: translateY(1.75rem); }
+  to   { transform: translateY(-1.75rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    animation: none;
-  }
-}
-
-.reveal-bleed {
-  animation: reveal ease-out both;
-  animation-timeline: view();
-  animation-range: entry 0% cover 15%;
-}
-
-@media (max-width: 639px) {
-  @keyframes reveal-bleed-mobile {
-    from { opacity: 0.95; transform: translateY(3.5rem) scaleX(0.92); border-radius: 1.5rem; }
-    to   { opacity: 1; transform: translateY(0) scaleX(1); border-radius: 0; }
-  }
-  .reveal-bleed {
-    animation-name: reveal-bleed-mobile;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal-bleed {
+  .editorial-drift {
     animation: none;
   }
 }
@@ -507,8 +487,8 @@
 }
 
 .scheme-purple {
-  --scheme-bg: var(--color-c4c-purple-200);
-  --scheme-text: var(--color-c4c-purple-800);
+  --scheme-bg: var(--color-c4c-purple-100);
+  --scheme-text: var(--color-c4c-purple-900);
   --scheme-muted: var(--color-c4c-purple-700);
   --scheme-accent: var(--color-c4c-purple-400);
   --scheme-border: var(--color-c4c-purple-800);
