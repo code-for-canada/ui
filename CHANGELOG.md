@@ -1,5 +1,30 @@
 # @code-for-canada/ui
 
+## 0.3.0
+
+### Minor Changes
+
+- de0f69d: Add `purple` and `blue` color variants to `Eyebrow`
+
+  `Eyebrow` now accepts `color="purple"` and `color="blue"` in addition to `"red"`, matching the brand colors already available on `IconCircle`. Text shades (`red-600`, `purple-800`, `blue-800`) are picked for legibility as on-white text.
+
+- bd3f14d: Add `Gallery` component and `Hero` eyebrow/meta slots
+
+  - `Gallery` — responsive image gallery with a mixed-span grid layout.
+  - `Hero` now accepts `eyebrow` (label above the title) and `meta` (byline row
+    below the summary) slots, and reworks the mobile secondary-image scheme
+    backdrop to size relative to the image.
+  - Prose imagery uses a subtle scroll-linked `editorial-drift` in place of the
+    previous `reveal`/`reveal-bleed` entrance animations.
+  - `Card` no longer applies a default border; typography prefers `text-pretty`
+    over `text-balance`; the `purple` scheme gets deeper bg/text contrast.
+
+- 445c582: Add `Radio`, `Checkbox`, and `Textarea` form components
+
+  - `RadioGroup` + `RadioGroupItem` — Radix-based single-choice list with full-width boxed-row options.
+  - `Checkbox` + `CheckboxGroup` — Radix-based multi-select with the same boxed-row treatment; `CheckboxGroup` stacks items tightly and triggers `FieldSet`'s existing checkbox-group spacing.
+  - `Textarea` — mirrors `Input`'s styling for multiline answers. New `withDictation` prop adds a microphone button that streams finalized speech into the field via the Web Speech API; the button is hidden on browsers without support and respects `prefers-reduced-motion`.
+
 ## 0.2.0
 
 ### Minor Changes
