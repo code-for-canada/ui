@@ -16,6 +16,8 @@ export {
   CardHeader,
 } from "./components/card";
 
+export { Gallery, type GalleryImage, type GalleryProps } from "./components/gallery";
+
 export {
   Field,
   FieldLabel,

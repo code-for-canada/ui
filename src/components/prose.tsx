@@ -2,7 +2,7 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../utils"
 
-const proseVariants = cva("prose prose-img:rounded-lg prose-img:reveal", {
+const proseVariants = cva("prose prose-img:rounded-lg prose-img:editorial-drift", {
   variants: {
     size: {
       sm: "prose-base",

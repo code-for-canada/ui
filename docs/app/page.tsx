@@ -47,6 +47,11 @@ export default function DesignSystemPage() {
               <a href="https://github.com/code-for-canada/ui">View on GitHub</a>
             </Button>
         }
+        secondary={
+        <div className="rounded-3xl">
+          <img src="/toolbox-light.png" width="100%"/>
+        </div>
+        }
       />
 
       {/* Logo */}

@@ -5,7 +5,7 @@ import { IconCircle } from "./icon-circle";
 
 // Title - Single-use hero/page title when only a short 1-4 word intro is needed
 const titleVariants = cva(
-  "text-[var(--scheme-muted)] tracking-tight leading-[0.96] text-balance text-pretty text-5xl md:text-6xl lg:text-6xl font-bold [&_strong]:animate-gradient [&_strong]:bg-linear-to-r/oklch [&_strong]:from-purple-900  [&_strong]:via-red-800 [&_strong]:via-25% [&_strong]:to-red-600 [&_strong]:bg-[length:80%] [&_strong]:bg-clip-text [&_strong]:bg-repeat-round [&_strong]:text-transparent"
+  "text-[var(--scheme-muted)] tracking-tight leading-[0.96] text-pretty text-5xl md:text-6xl lg:text-6xl font-bold [&_strong]:animate-gradient [&_strong]:bg-linear-to-r/oklch [&_strong]:from-purple-900  [&_strong]:via-red-800 [&_strong]:via-25% [&_strong]:to-red-600 [&_strong]:bg-[length:80%] [&_strong]:bg-clip-text [&_strong]:bg-repeat-round [&_strong]:text-transparent"
 );
 
 interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
@@ -57,7 +57,7 @@ function Subtitle({
 /** 
  * Heading - General headings with configurable size (decoupled from semantic level)
  */
-const headingVariants = cva("tracking-tight text-balance font-semibold has-[strong]:font-semibold [&_strong]:font-bold text-[var(--scheme-muted)] has-[strong]:text-[var(--scheme-muted)] [&_strong]:text-[var(--scheme-text)]", {
+const headingVariants = cva("tracking-tight text-pretty font-semibold has-[strong]:font-semibold [&_strong]:font-bold text-[var(--scheme-muted)] has-[strong]:text-[var(--scheme-muted)] [&_strong]:text-[var(--scheme-text)]", {
   variants: {
     size: {
       sm: "text-xl leading-[1.1] md:text-2xl lg:text-2xl",
