@@ -58,7 +58,7 @@ function Hero({
             )}
           >
             <div className="space-y-6">
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {eyebrow ? (
                   <Eyebrow className="fade-in">{eyebrow}</Eyebrow>
                 ) : null}
