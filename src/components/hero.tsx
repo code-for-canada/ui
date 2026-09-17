@@ -99,7 +99,7 @@ function Hero({
             {/* Desktop: beside the text, no overlap */}
             {secondary ? (
               <div className="fade-in-delay-2 hidden lg:block">
-                <div className="ml-auto w-full max-w-md max-h-[28rem]">
+                <div className="ml-auto w-full max-h-[32rem]">
                   {secondary}
                 </div>
               </div>
