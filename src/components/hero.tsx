@@ -118,7 +118,7 @@ function Hero({
             aria-hidden
           />
           <PageContainer className={containerClassName}>
-            <div className="fade-in-delay-2 relative w-full max-w-md max-h-[28rem]">
+            <div className="fade-in-delay-2 relative w-full max-h-[28rem]">
               {secondary}
             </div>
           </PageContainer>
