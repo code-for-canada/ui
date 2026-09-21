@@ -1,5 +1,11 @@
 # @code-for-canada/ui
 
+## 0.3.1
+
+### Patch Changes
+
+- 525a7b1: Remove `max-w-md` constraint on the Hero secondary slot so it can fill the available width.
+
 ## 0.3.0
 
 ### Minor Changes
