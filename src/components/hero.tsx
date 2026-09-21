@@ -54,7 +54,7 @@ function Hero({
         <PageContainer className={containerClassName}>
           <div
             className={cn(
-              secondary && "lg:grid lg:grid-cols-2 lg:items-center lg:gap-4",
+              secondary && "lg:grid lg:grid-cols-2 lg:items-center lg:gap-8",
             )}
           >
             <div className="space-y-6">
